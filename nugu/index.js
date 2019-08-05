@@ -7,11 +7,13 @@ var cheerio = require('cheerio');
 var request = require('request');
 
 var url = 'http://192.168.35.178/';
+function htmlparsing(){
 request(url, function(error, response, html){
     if (error) {throw error};
 
     console.log (html);
 });
+}
 
 function threegameon(){
   gameon = 1
@@ -157,6 +159,9 @@ class NPKRequest {
     break     
     case 'GAMEACTION_STOP_INSERT':
         gameoff()
+    break 
+    case 'WATER_STATUE':
+      htmlparsing()
     break 
     }
   }

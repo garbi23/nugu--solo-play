@@ -7,6 +7,6 @@ router.post(`/nugu/NUMBER_ACTION`, nugu);
 router.post(`/nugu/GAME_THREENINESIX`, nugu);
 router.post(`/nugu/GAMEACTION_STOP`, nugu);
 router.post(`/nugu/GAMEACTION_STOP_INSERT`, nugu);
-
+router.post(`/nugu/WATER_STATUE`, nugu);
 
 module.exports = router;
