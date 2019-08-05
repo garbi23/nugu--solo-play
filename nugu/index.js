@@ -3,7 +3,15 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
+var cheerio = require('cheerio');
+var request = require('request');
 
+var url = 'http://192.168.35.178/';
+request(url, function(error, response, html){
+    if (error) {throw error};
+
+    console.log (html);
+});
 
 function threegameon(){
   gameon = 1
