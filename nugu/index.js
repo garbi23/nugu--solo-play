@@ -12,6 +12,7 @@ function threegameon(){
   console.log(gameon)
 }
 
+
 function gameoff(){
   gameon = 0
   numbertwo = 0
