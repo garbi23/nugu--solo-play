@@ -157,7 +157,7 @@ class NPKRequest {
     break     
     case 'GAMEACTION_STOP_INSERT':
         gameoff()
-    break 
+    break
     }
   }
 }
