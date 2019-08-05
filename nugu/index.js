@@ -12,7 +12,7 @@ function htmlparsing(){
   request(url, function(error, response, html){
       if (error) {throw error};
 
-      console.log (html);
+      console.log (body);
   });
 }
 
