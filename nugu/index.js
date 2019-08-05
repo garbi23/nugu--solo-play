@@ -9,11 +9,13 @@ var request = require('request');
 var url = 'http://192.168.35.178/';
 
 function htmlparsing(){
-  request(url, function(error, response, html){
-      if (error) {throw error};
+request(url, function(err, res, body){
+    if(err){
+         throw err;
+    }
 
-      console.log (body);
-  });
+    console.log(body); //응답받은 html 문서의 body tag 내용을 콘솔에 출력함
+});
 }
 
 function threegameon(){
