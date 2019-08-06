@@ -190,9 +190,7 @@ class NPKRequest {
     break
     case 'WATER_STATUE':  
     mysqlparsing()
-    setTimeout(function() {
-      npkResponse.setOutputsrvaluePar()
-    }, 2000);
+    npkResponse.setOutputsrvaluePar()
     break    
     }
   }
@@ -225,6 +223,7 @@ class NPKResponse {
     }
   }
   setOutputsrvaluePar(){
+    mysqlparsing()
     this.output = {
       nowwater: srvalue,
       watersay: srstat
@@ -232,13 +231,11 @@ class NPKResponse {
   }
 }
   const nuguReq = function (httpReq, httpRes, next) {
-    setTimeout(function() {
     npkResponse = new NPKResponse()
     npkRequest = new NPKRequest(httpReq)
     npkRequest.do(npkResponse)
     console.log(`NPKResponse: ${JSON.stringify(npkResponse)}`)
     return httpRes.send(npkResponse)
-    }, 3000);
   };
   
   module.exports = nuguReq;
