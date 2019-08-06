@@ -32,6 +32,8 @@ function gameoff(){
 }
 
 function parsingsrvalue(){
+
+  console.log('mysql 파싱을 시작합니다')
   let srvalue = 0
   let srstat = 0
 
@@ -41,20 +43,22 @@ function parsingsrvalue(){
 
     srvalue = results
 
-    if(srvalue <= 30){
-      srstat = '물이 부족합니다! 어서 물을 주세요!'
-    }else if(srvalue > 30 || srvalue < 80){
-      srstat = '물이 적당합니다!'
-    }else{
-      srstat = '물이 충분합니다!'
-    }
-
     console.log(srstat)
     console.log(srvalue)
 
     return {srvalue, srstat}
 
   });   
+
+  if(srvalue <= 30){
+    srstat = '물이 부족합니다! 어서 물을 주세요!'
+  }else if(srvalue > 30 || srvalue < 80){
+    srstat = '물이 적당합니다!'
+  }else{
+    srstat = '물이 충분합니다!'
+  }
+
+  return {srvalue, srstat}
 
 }
 
