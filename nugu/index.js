@@ -19,6 +19,10 @@ var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
 
 connection.connect()
 
+
+
+
+
 function threegameon(){
   gameon = 1
   numbertwo = 0
@@ -168,7 +172,8 @@ class NPKRequest {
           var D_query = connection.query(Dupli_Query, function(err, results){
             if(err){throw err}
 
-            srvalue = results;
+            var str = String(results)
+            srvalue = str.replace(/[^0-9]/g,"");
             console.log(srvalue)
             if(srvalue <= 30){
                 srstat = '물이 부족합니다! 어서 물을 주세요!'
