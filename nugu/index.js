@@ -23,7 +23,8 @@ function mysqlcallback(err, rows, fields){
 
   }
   for(var i=0; i < rows.length; i++){
-    srvalue = rows[i].value 
+    console.log(rows[i].value)
+    srvalue = rows[i].value
   }
 
   if(srvalue <= 30){
