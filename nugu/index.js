@@ -221,10 +221,10 @@ class NPKResponse {
       clapnumber: clapnum.number,
     }
   }
-  setOutputsrvaluePar(){
+  setOutputsrvaluePar(srtovalue){
     this.output = {
-      nowwater: srvalue,
-      watersay: srstat
+      nowwater: srtovalue.srvalue,
+      watersay: srtovalue.srstat
     }
   }
 }
