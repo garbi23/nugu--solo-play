@@ -231,6 +231,8 @@ class NPKResponse {
 }
 
 
+setTimeout(function() {
+  
 const nuguReq = function (httpReq, httpRes, next) {
   npkResponse = new NPKResponse()
   npkRequest = new NPKRequest(httpReq)
@@ -240,4 +242,6 @@ const nuguReq = function (httpReq, httpRes, next) {
 };
 
 module.exports = nuguReq;
+}, 1000);
+
   
