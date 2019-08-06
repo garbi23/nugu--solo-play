@@ -190,7 +190,9 @@ class NPKRequest {
     break
     case 'WATER_STATUE':  
     mysqlparsing()
-    npkResponse.setOutputsrvaluePar()
+    setTimeout(function() {
+      npkResponse.setOutputsrvaluePar()
+    }, 2000);
     break    
     }
   }
@@ -229,9 +231,6 @@ class NPKResponse {
     }
   }
 }
-setTimeout(function() {
-}, 3000);
-
   const nuguReq = function (httpReq, httpRes, next) {
     setTimeout(function() {
     npkResponse = new NPKResponse()
