@@ -3,6 +3,8 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
+let srvalue = 0
+let srstat = 0
 var mysql = require('mysql')
 
 
@@ -33,15 +35,11 @@ function gameoff(){
 }
 
 function parsingsrvalue(){
-
-  let srvalue = 0
-  let srstat = 0
-
   var D_query = connection.query(Dupli_Query, function(err, results){
     if(err){throw err}
 
     var str = String(results)
-    srvalue = 10
+    srvalue = str
     console.log(srvalue)
     if(srvalue <= 30){
         srstat = '물이 부족합니다! 어서 물을 주세요!'
@@ -51,8 +49,6 @@ function parsingsrvalue(){
         srstat = '물이 충분합니다!'
     }
   });    
-
-  return {srvalue, srstat}
 
 }
 
@@ -187,8 +183,8 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-        const srtovalue = parsingsrvalue()
-        npkResponse.setOutputsrvaluePar(srtovalue)
+        parsingsrvalue()
+        npkResponse.setOutputsrvaluePar()
     break    
     }
   }
@@ -221,10 +217,10 @@ class NPKResponse {
       clapnumber: clapnum.number,
     }
   }
-  setOutputsrvaluePar(srtovalue){
+  setOutputsrvaluePar(){
     this.output = {
-      nowwater: srtovalue.srvalue,
-      watersay: srtovalue.srstat
+      nowwater: srvalue,
+      watersay: srstat
     }
   }
 }
