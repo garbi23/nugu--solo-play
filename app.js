@@ -2,8 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-var WebSocketS = require("ws").Server;
-var wss = new WebSocketServer({ port: 3000 });
+
 
 const {SERVER_PORT} = require('./config.js');
 const routes = require('./routes');
