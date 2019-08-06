@@ -46,9 +46,10 @@ function parsingsrvalue(){
     console.log(srstat)
     console.log(srvalue)
 
-    return {srvalue, srstat}
 
-  });   
+  }); 
+
+  srvalue = results
 
   if(srvalue <= 30){
     srstat = '물이 부족합니다! 어서 물을 주세요!'
@@ -57,8 +58,6 @@ function parsingsrvalue(){
   }else{
     srstat = '물이 충분합니다!'
   }
-
-  return {srvalue, srstat}
 
 }
 
