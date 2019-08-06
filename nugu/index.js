@@ -3,8 +3,6 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
-let srvalue = 0
-let srstat = 0
 var mysql = require('mysql')
 
 
@@ -15,7 +13,6 @@ var connection = mysql.createConnection({
   database : 'nugudb'
 });
 
-var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
 
 connection.connect()
 
@@ -35,20 +32,27 @@ function gameoff(){
 }
 
 function parsingsrvalue(){
+  let srvalue = 0
+  let srstat = 0
+  var str = 0;
+
+  var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
   var D_query = connection.query(Dupli_Query, function(err, results){
     if(err){throw err}
-
-    var str = String(results)
-    srvalue = str
-    console.log(srvalue)
-    if(srvalue <= 30){
-        srstat = '물이 부족합니다! 어서 물을 주세요!'
-    }else if(srvalue > 30 || srvalue < 80){
-        srstat = '물이 적당합니다!'
-    }else{
-        srstat = '물이 충분합니다!'
-    }
+    str = String(results)
   });    
+
+  srvalue = str
+  console.log(srvalue)
+  if(srvalue <= 30){
+      srstat = '물이 부족합니다! 어서 물을 주세요!'
+  }else if(srvalue > 30 || srvalue < 80){
+      srstat = '물이 적당합니다!'
+  }else{
+      srstat = '물이 충분합니다!'
+  }
+
+  return {srvalue, srstat}
 
 }
 
@@ -183,8 +187,8 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-        parsingsrvalue()
-        npkResponse.setOutputsrvaluePar()
+        const srtovalue = parsingsrvalue()
+        npkResponse.setOutputsrvaluePar(srtovalue)
     break    
     }
   }
