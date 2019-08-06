@@ -234,12 +234,12 @@ setTimeout(function() {
 
   const nuguReq = function (httpReq, httpRes, next) {
     setTimeout(function() {
-      npkResponse = new NPKResponse()
-    }, 3000);
+    npkResponse = new NPKResponse()
     npkRequest = new NPKRequest(httpReq)
     npkRequest.do(npkResponse)
     console.log(`NPKResponse: ${JSON.stringify(npkResponse)}`)
     return httpRes.send(npkResponse)
+    }, 3000);
   };
   
   module.exports = nuguReq;
