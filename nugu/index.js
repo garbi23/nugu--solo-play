@@ -8,6 +8,13 @@ let srvalue = soil.value();
 let srstat = soil.stat();
 
 
+var revalue = setInterval(function()
+{
+
+  console.log(rows[i].srvalue)
+
+},1000);
+
 function threegameon(){
   gameon = 1
   numbertwo = 0
