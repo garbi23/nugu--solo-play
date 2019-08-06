@@ -40,21 +40,21 @@ function parsingsrvalue(){
   var D_query = connection.query(Dupli_Query, function(err, results){
     if(err){throw err}
     srvalue = results
-    console.log(results)
-    console.log(srvalue)
-  });    
 
-  console.log(srvalue)
-  console.log(str)
-  if(srvalue <= 30){
+    if(srvalue <= 30){
       srstat = '물이 부족합니다! 어서 물을 주세요!'
-  }else if(srvalue > 30 || srvalue < 80){
+    }else if(srvalue > 30 || srvalue < 80){
       srstat = '물이 적당합니다!'
-  }else{
+    }else{
       srstat = '물이 충분합니다!'
-  }
+    }
 
-  return {srvalue, srstat}
+    console.log(srstat)
+    console.log(srvalue)
+
+    return {srvalue, srstat}
+
+  });   
 
 }
 
