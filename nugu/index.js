@@ -32,13 +32,13 @@ function gameoff(){
 }
 
 function parsingsrvalue(){
+  let srvalue = 0
+  let srstat = 0
+
   var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
   var D_query = connection.query(Dupli_Query, function(err, results){
     if(err){throw err}
 
-    var srvalue = 0
-    var srstat = 0
-    
     srvalue = results
 
     if(srvalue <= 30){
