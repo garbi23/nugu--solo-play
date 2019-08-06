@@ -191,7 +191,7 @@ class NPKRequest {
     case 'WATER_STATUE':  
     mysqlparsing()
     setTimeout(function() {
-    npkResponse.setOutputsrvaluePar();
+    npkResponse.setOutputsrvaluePar()
     }, 1000);
     break    
     }
@@ -232,16 +232,17 @@ class NPKResponse {
   }
 }
 
+const nuguReq = function (httpReq, httpRes, next) {
+  npkResponse = new NPKResponse()
+  npkRequest = new NPKRequest(httpReq)
+  npkRequest.do(npkResponse)
+  console.log(`NPKResponse: ${JSON.stringify(npkResponse)}`)
+  return httpRes.send(npkResponse)
+};
+
 setTimeout(function() {
-  const nuguReq = function (httpReq, httpRes, next) {
-    npkResponse = new NPKResponse()
-    npkRequest = new NPKRequest(httpReq)
-    npkRequest.do(npkResponse)
-    console.log(`NPKResponse: ${JSON.stringify(npkResponse)}`)
-    return httpRes.send(npkResponse)
-  };
 
   module.exports = nuguReq;
   
-  }, 1200);
+}, 1200);
   
