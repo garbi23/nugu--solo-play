@@ -168,7 +168,7 @@ class NPKRequest {
           var D_query = connection.query(Dupli_Query, function(err, results){
             if(err){throw err}
 
-            var str = results
+            var str = parseInt(results)
             console.log(str)
             if(srvalue <= 30){
                 srstat = '물이 부족합니다! 어서 물을 주세요!'
@@ -178,7 +178,7 @@ class NPKRequest {
                 srstat = '물이 충분합니다!'
             }
           });      
-          npkResponse.setOutputgamevalue()
+          npkResponse.setOutputsrvaluePar()
     break    
     }
   }
