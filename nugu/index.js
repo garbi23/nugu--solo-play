@@ -167,7 +167,10 @@ class NPKRequest {
     case 'WATER_STATUE':
           var D_query = connection.query(Dupli_Query, function(err, results){
             if(err){throw err}
-            srvalue = results.replace(/[^0-9]/g,"")
+
+            var str = results
+
+            srvalue = str.replace(/[^0-9]/g,"")
             console.log(srvalue)
             if(srvalue <= 30){
                 srstat = '물이 부족합니다! 어서 물을 주세요!'
