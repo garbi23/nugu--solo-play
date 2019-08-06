@@ -4,7 +4,7 @@ const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
-var soil = require("./soil");
+var soil = require("./db");
 
 
 function threegameon(){
