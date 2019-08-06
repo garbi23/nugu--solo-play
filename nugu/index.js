@@ -162,13 +162,12 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':
-
-      connection.connect();    //mysql 연결
+      
+      connection.connect();
       var D_query = connection.query(Dupli_Query, function(err, results){
         if(err){throw err}
         console.log(results);    //결과값 출력
       });
-      connection.end();
     break    
     }
   }
