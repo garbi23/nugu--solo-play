@@ -3,6 +3,7 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
+var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 var mysql = require('mysql')
 let srvalue = 0
 let srstat = 0
@@ -14,21 +15,15 @@ var connection = mysql.createConnection({
   database : 'nugudb'
 });
 
-connection.connect()
-
-var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
-
 function mysqlparsing(){
-  var D_query = connection.query(Dupli_Query, function(err, rows, fields){
+  connection.query(Dupli_Query, function(err, rows, fields){
     if(err){
       throw err
-  
     }
     for(var i=0; i < rows.length; i++){
       console.log(rows[i].srvalue)
       srvalue = rows[i].srvalue
     }
-  
     if(srvalue <= 30){
       srstat = '물이 부족합니다! 어서 물을 주세요!'
      }else if(srvalue > 30 && srvalue < 80){
@@ -39,7 +34,11 @@ function mysqlparsing(){
   });
 }
 
+connection.connect()
+
 mysqlparsing()
+
+connection.end()
 
 
 
@@ -132,7 +131,6 @@ class NPKRequest {
     this.context = httpReq.body.context
     this.action = httpReq.body.action
     console.log(`NPKRequest: ${JSON.stringify(this.context)}, ${JSON.stringify(this.action)}`)
-    mysqlparsing()
   }
 
   do(npkResponse) {
@@ -194,7 +192,6 @@ class NPKRequest {
     case 'WATER_STATUE':  
     mysqlparsing()
     npkResponse.setOutputsrvaluePar();
-    mysqlparsing()
     break    
     }
   }
