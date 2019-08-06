@@ -3,8 +3,6 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
-let srvalue = 0
-let srstat = 0
 var mysql = require('mysql')
 
 
@@ -21,8 +19,6 @@ connection.connect()
 
 
 
-
-
 function threegameon(){
   gameon = 1
   numbertwo = 0
@@ -36,6 +32,29 @@ function gameoff(){
   numbertwo = 0
   console.log('-----------게임종료-----------')
   console.log(gameon)
+}
+
+function parsingsrvalue(){
+  let srvalue = 0
+  let srstat = 0
+
+  var D_query = connection.query(Dupli_Query, function(err, results){
+    if(err){throw err}
+
+    var str = String(results)
+    srvalue = str.replace(/[^0-9]/g,"");
+    console.log(str)
+    if(srvalue <= 30){
+        srstat = '물이 부족합니다! 어서 물을 주세요!'
+    }else if(srvalue > 30 || srvalue < 80){
+        srstat = '물이 적당합니다!'
+    }else{
+        srstat = '물이 충분합니다!'
+    }
+  });    
+
+  return {srvalue, srstat}
+
 }
 
 function threesixnine(numberone){
@@ -168,22 +187,9 @@ class NPKRequest {
     case 'GAMEACTION_STOP_INSERT':
         gameoff()
     break
-    case 'WATER_STATUE':
-          var D_query = connection.query(Dupli_Query, function(err, results){
-            if(err){throw err}
-
-            var str = String(results)
-            srvalue = str.replace(/[^0-9]/g,"");
-            console.log(srvalue)
-            if(srvalue <= 30){
-                srstat = '물이 부족합니다! 어서 물을 주세요!'
-            }else if(srvalue > 30 || srvalue < 80){
-                srstat = '물이 적당합니다!'
-            }else{
-                srstat = '물이 충분합니다!'
-            }
-          });      
-          npkResponse.setOutputsrvaluePar()
+    case 'WATER_STATUE':  
+          const srtovalue = parsingsrvalue()
+          npkResponse.setOutputsrvaluePar(srtovalue)
     break    
     }
   }
@@ -216,10 +222,10 @@ class NPKResponse {
       clapnumber: clapnum.number,
     }
   }
-  setOutputsrvaluePar(){
+  setOutputsrvaluePar(srtovalue){
     this.output = {
-      nowwater: srvalue,
-      watersay: srstat
+      nowwater: srtovalue.srvalue,
+      watersay: srtovalue.srstat
     }
   }
 }
