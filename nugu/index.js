@@ -190,10 +190,7 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-     connection.query(Dupli_Query ,mysqlcallback)
-     setTimeout(function() {
-      npkResponse.setOutputsrvaluePar()
-    }, 1000);
+      connection.query(Dupli_Query ,mysqlcallback)
     break    
     }
   }
