@@ -15,6 +15,8 @@ var connection = mysql.createConnection({
 
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
 
+connection.connect();
+
 
 function threegameon(){
   gameon = 1
@@ -162,12 +164,10 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':
-        router.post('/nugudb', function(req, res, next) {
           var D_query = connection.query(Dupli_Query, function(err, results){
             if(err){throw err}
             console.log(results);    //결과값 출력
           });      
-        });
     break    
     }
   }
