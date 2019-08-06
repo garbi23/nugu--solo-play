@@ -4,7 +4,8 @@ const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
 var mysql = require('mysql')
-
+let srvalue = 0
+let srstat = 0
 
 var connection = mysql.createConnection({
   host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
@@ -165,8 +166,6 @@ class NPKRequest {
     break
     case 'WATER_STATUE':  
       console.log('mysql 파싱을 시작합니다')
-      let srvalue = 0
-      let srstat = 0
   
      var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
       var D_query = connection.query(Dupli_Query, function(err, results){
@@ -175,18 +174,17 @@ class NPKRequest {
         srvalue = results
   
         if(srvalue <= 30){
-         srstat = '물이 부족합니다! 어서 물을 주세요!'
+          srstat = '물이 부족합니다! 어서 물을 주세요!'
         }else if(srvalue > 30 || srvalue < 80){
           srstat = '물이 적당합니다!'
        }else{
-         srstat = '물이 충분합니다!'
+          srstat = '물이 충분합니다!'
        }
   
         console.log(srstat)
         console.log(srvalue)
 
-        let srtovalue = {tsrstat : srstat, tsrvalue : srvalue}
-        npkResponse.setOutputsrvaluePar(srtovalue)
+        npkResponse.setOutputsrvaluePar()
      });
     break    
     }
@@ -220,10 +218,10 @@ class NPKResponse {
       clapnumber: clapnum.number,
     }
   }
-  setOutputsrvaluePar(srtovalue){
+  setOutputsrvaluePar(){
     this.output = {
-      nowwater: srtovalue.tsrvalue,
-      watersay: srtovalue.tsrstat
+      nowwater: srvalue,
+      watersay: srstat
     }
   }
 }
