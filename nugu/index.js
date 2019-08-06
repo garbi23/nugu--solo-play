@@ -4,6 +4,8 @@ const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
 var mysql = require('mysql')
+let srvalue = 0
+let srstat = 0
 
 var connection = mysql.createConnection({
   host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
@@ -17,9 +19,6 @@ connection.connect()
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 
 function mysqlcallback(err, rows, fields){
-
-  let srvalue = 0
-  let srstat = 0
 
   if(err){
     throw err
@@ -39,9 +38,9 @@ function mysqlcallback(err, rows, fields){
    }
 
    return {srvalue, srstat}
-
-
 }
+
+connection.query(Dupli_Query ,mysqlcallback)
 
 
 function threegameon(){
@@ -192,8 +191,10 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-        let tosrva = connection.query(Dupli_Query ,mysqlcallback)
-        npkResponse.setOutputsrvaluePar(tosrva);
+        connection.query(Dupli_Query ,mysqlcallback)
+        setTimeout(function() {
+          npkResponse.setOutputsrvaluePar(tosrva);
+        }, 3000);
     break    
     }
   }
@@ -226,10 +227,10 @@ class NPKResponse {
       clapnumber: clapnum.number,
     }
   }
-  setOutputsrvaluePar(tosrva){
+  setOutputsrvaluePar(){
     this.output = {
-      nowwater: tosrva.srvalue,
-      watersay: tosrva.srstat
+      nowwater: srvalue,
+      watersay: srstat
     }
   }
 }
