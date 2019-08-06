@@ -193,7 +193,7 @@ class NPKRequest {
     case 'WATER_STATUE':  
         connection.query(Dupli_Query ,mysqlcallback)
         setTimeout(function() {
-          npkResponse.setOutputsrvaluePar(tosrva);
+          npkResponse.setOutputsrvaluePar();
         }, 3000);
     break    
     }
@@ -209,7 +209,6 @@ class NPKResponse {
     this.output = {}
     this.directives = []
   }
-
   setOutputParameters(numreset) {
 
     this.output = {
