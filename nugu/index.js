@@ -18,8 +18,7 @@ connection.connect()
 
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 
-function mysqlcallback(err, rows, fields){
-
+var D_query = connection.query(Dupli_Query, function(err, rows, fields){
   if(err){
     throw err
 
@@ -36,11 +35,7 @@ function mysqlcallback(err, rows, fields){
    }else{
     srstat = '물이 충분합니다!'
    }
-
-   return {srvalue, srstat}
-}
-
-connection.query(Dupli_Query ,mysqlcallback)
+});
 
 
 function threegameon(){
@@ -191,10 +186,26 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-        connection.query(Dupli_Query ,mysqlcallback)
-        setTimeout(function() {
-          npkResponse.setOutputsrvaluePar();
-        }, 3000);
+    var D_query = connection.query(Dupli_Query, function(err, rows, fields){
+      if(err){
+        throw err
+    
+      }
+      for(var i=0; i < rows.length; i++){
+        console.log(rows[i].srvalue)
+        srvalue = rows[i].srvalue
+      }
+    
+      if(srvalue <= 30){
+        srstat = '물이 부족합니다! 어서 물을 주세요!'
+       }else if(srvalue > 30 && srvalue < 80){
+        srstat = '물이 적당합니다!'
+       }else{
+        srstat = '물이 충분합니다!'
+       }
+    });
+    
+        npkResponse.setOutputsrvaluePar();
     break    
     }
   }
