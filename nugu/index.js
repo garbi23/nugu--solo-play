@@ -3,20 +3,19 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
-var cheerio = require('cheerio');
-var request = require('request');
+var mysql = require('mysql');
 
-var url = 'http://192.168.35.178/';
 
-function htmlparsing(){
-request(url, function(err, res, body){
-    if(err){
-         throw err;
-    }
-
-    console.log(body); //응답받은 html 문서의 body tag 내용을 콘솔에 출력함
+var connection = mysql.createConnection({
+  host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
+  user : 'root',
+  password : 'blablabla',
+  database : 'nugudb'
 });
-}
+
+var Dupli_Query = "SELECT id FROM sensor WHERE id='srvalue'";   //쿼리문
+
+
 
 function threegameon(){
   gameon = 1
@@ -164,7 +163,12 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':
-        htmlparsing()
+      connection.connect();    //mysql 연결
+      var D_query = connection.query(Dupli_Query, function(err, results){
+        if(err){throw err}
+        console.log(results);    //결과값 출력
+      });
+      connection.end();
     break    
     }
   }
