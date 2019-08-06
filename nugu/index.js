@@ -3,8 +3,9 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
-var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 var soil = require("./db");
+let srvalue = soil.value();
+let srstat = soil.stat();
 
 
 function threegameon(){
@@ -155,6 +156,8 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
+    srvalue = soil.value();
+    srstat = soil.stat();
     npkResponse.setOutputsrvaluePar()
     break    
     }
