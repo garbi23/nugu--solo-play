@@ -31,34 +31,7 @@ function gameoff(){
   console.log(gameon)
 }
 
-function parsingsrvalue(){
 
-  console.log('mysql 파싱을 시작합니다')
-  let srvalue = 0
-  let srstat = 0
-
-  var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
-  var D_query = connection.query(Dupli_Query, function(err, results){
-    if(err){throw err}
-
-    srvalue = results
-
-    if(srvalue <= 30){
-      srstat = '물이 부족합니다! 어서 물을 주세요!'
-    }else if(srvalue > 30 || srvalue < 80){
-      srstat = '물이 적당합니다!'
-    }else{
-      srstat = '물이 충분합니다!'
-    }
-
-    console.log(srstat)
-    console.log(srvalue)
-
-    return {srvalue, srstat}
-
-  }); 
-
-}
 
 function threesixnine(numberone){
   numbertwo = numbertwo + 2
@@ -191,8 +164,30 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-        const srtovalue = parsingsrvalue()
+      console.log('mysql 파싱을 시작합니다')
+      let srvalue = 0
+      let srstat = 0
+  
+     var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
+      var D_query = connection.query(Dupli_Query, function(err, results){
+       if(err){throw err}
+        
+        srvalue = results
+  
+        if(srvalue <= 30){
+         srstat = '물이 부족합니다! 어서 물을 주세요!'
+        }else if(srvalue > 30 || srvalue < 80){
+          srstat = '물이 적당합니다!'
+       }else{
+         srstat = '물이 충분합니다!'
+       }
+  
+        console.log(srstat)
+        console.log(srvalue)
+
+        const srtovalue = {srstat, srvalue}
         npkResponse.setOutputsrvaluePar(srtovalue)
+     });
     break    
     }
   }
@@ -227,6 +222,7 @@ class NPKResponse {
   }
   setOutputsrvaluePar(srtovalue){
     this.output = {
+    
       nowwater: srtovalue.srvalue,
       watersay: srtovalue.srstat
     }
