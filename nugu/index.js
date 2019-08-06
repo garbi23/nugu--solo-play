@@ -190,7 +190,7 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-      connection.query(Dupli_Query ,mysqlcallback)
+        connection.query(Dupli_Query ,mysqlcallback)
     break    
     }
   }
