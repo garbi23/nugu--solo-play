@@ -143,6 +143,7 @@ class NPKRequest {
 
     const actionName = this.action.actionName
     const parameters = this.action.parameters
+    connection.query(Dupli_Query ,mysqlcallback)
   switch (actionName) {
     case 'NUMBER_ACTION': //특정 액션 작동하는 부분
          let numberone = 1
@@ -190,12 +191,11 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-
-     connection.query(Dupli_Query ,mysqlcallback)
      connection.query(Dupli_Query ,mysqlcallback)
      console.log(srstat)
      console.log(srvalue)
      npkResponse.setOutputsrvaluePar()
+     connection.query(Dupli_Query ,mysqlcallback)
     break    
     }
   }
