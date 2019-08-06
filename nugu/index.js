@@ -190,7 +190,7 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-     npkResponse.setOutputsrvaluePar(tosrvalue)
+     npkResponse.setOutputsrvaluePar()
     break    
     }
   }
