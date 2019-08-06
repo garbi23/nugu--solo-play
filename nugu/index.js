@@ -11,7 +11,7 @@ let srstat = soil.stat();
 var revalue = setInterval(function()
 {
 
-  console.log(rows[i].srvalue)
+  console.log('테스트')
 
 },1000);
 
