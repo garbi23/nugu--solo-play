@@ -169,9 +169,7 @@ class NPKRequest {
             if(err){throw err}
 
             var str = results
-
-            srvalue = str.replace(/[^0-9]/g,"")
-            console.log(srvalue)
+            console.log(str)
             if(srvalue <= 30){
                 srstat = '물이 부족합니다! 어서 물을 주세요!'
             }else if(srvalue > 30 || srvalue < 80){
