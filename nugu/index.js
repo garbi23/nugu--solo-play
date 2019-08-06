@@ -15,6 +15,8 @@ var connection = mysql.createConnection({
   database : 'nugudb'
 });
 
+connection.connect()
+
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 
 function mysqlcallback(err, rows, fields){
@@ -38,8 +40,6 @@ function mysqlcallback(err, rows, fields){
 
 
 }
-
-connection.connect()
 
 
 function threegameon(){
@@ -190,7 +190,10 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-     npkResponse.setOutputsrvaluePar()
+     connection.query(Dupli_Query ,mysqlcallback)
+     setTimeout(function() {
+      npkResponse.setOutputsrvaluePar()
+    }, 1000);
     break    
     }
   }
@@ -224,7 +227,6 @@ class NPKResponse {
     }
   }
   setOutputsrvaluePar(){
-    connection.query(Dupli_Query ,mysqlcallback)
     this.output = {
       nowwater: srvalue,
       watersay: srstat
