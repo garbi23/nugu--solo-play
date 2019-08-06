@@ -39,7 +39,7 @@ function parsingsrvalue(){
   var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
   var D_query = connection.query(Dupli_Query, function(err, results){
     if(err){throw err}
-    str = String(results)
+    str = results
   });    
 
   srvalue = str
