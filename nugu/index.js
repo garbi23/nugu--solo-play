@@ -41,7 +41,6 @@ function mysqlcallback(err, rows, fields){
 
 
 connection.connect()
-connection.query(Dupli_Query ,mysqlcallback)
 
 function threegameon(){
   gameon = 1
@@ -192,6 +191,7 @@ class NPKRequest {
     break
     case 'WATER_STATUE':  
 
+     connection.query(Dupli_Query ,mysqlcallback)
      connection.query(Dupli_Query ,mysqlcallback)
      console.log(srstat)
      console.log(srvalue)
