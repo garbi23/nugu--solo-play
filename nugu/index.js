@@ -4,36 +4,7 @@ const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
-var mysql = require('mysql')
-let srvalue = 0
-let srstat = 0
-
-var connection = mysql.createConnection({
-  host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
-  user : 'root',
-  password : 'xodnsqkqh233',
-  database : 'nugudb'
-});
-
-connection.connect()
-
-connection.query(Dupli_Query, function(err, rows, fields){
-  if(err){
-    throw err
-  }
-  for(var i=0; i < rows.length; i++){
-    console.log(rows[i].srvalue)
-    srvalue = rows[i].srvalue
-  }
-  if(srvalue <= 30){
-    srstat = '물이 부족합니다! 어서 물을 주세요!'
-   }else if(srvalue > 30 && srvalue < 80){
-    srstat = '물이 적당합니다!'
-   }else{
-    srstat = '물이 충분합니다!'
-   }
-});
-
+var soil = require("./soil");
 
 
 function threegameon(){
@@ -218,28 +189,12 @@ class NPKResponse {
   }
   setOutputsrvaluePar(){
     this.output = {
-      nowwater: srvalue,
-      watersay: srstat
+      nowwater: soil.value(),
+      watersay: soil.stat()
     }
   }
 }
   const nuguReq = function (httpReq, httpRes, next) {
-    connection.query(Dupli_Query, function(err, rows, fields){
-      if(err){
-        throw err
-      }
-      for(var i=0; i < rows.length; i++){
-        console.log(rows[i].srvalue)
-        srvalue = rows[i].srvalue
-      }
-      if(srvalue <= 30){
-        srstat = '물이 부족합니다! 어서 물을 주세요!'
-       }else if(srvalue > 30 && srvalue < 80){
-        srstat = '물이 적당합니다!'
-       }else{
-        srstat = '물이 충분합니다!'
-       }
-    });
     npkResponse = new NPKResponse()
     npkRequest = new NPKRequest(httpReq)
     npkRequest.do(npkResponse)
