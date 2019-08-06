@@ -17,8 +17,6 @@ var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
 
 connection.connect()
 
-
-
 function threegameon(){
   gameon = 1
   numbertwo = 0
@@ -42,7 +40,7 @@ function parsingsrvalue(){
     if(err){throw err}
 
     var str = String(results)
-    srvalue = str.replace(/[^0-9]/g,"");
+    srvalue = 10
     console.log(str)
     if(srvalue <= 30){
         srstat = '물이 부족합니다! 어서 물을 주세요!'
