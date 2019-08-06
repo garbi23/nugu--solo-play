@@ -40,9 +40,9 @@ function parsingsrvalue(){
   var D_query = connection.query(Dupli_Query, function(err, results){
     if(err){throw err}
     srvalue = results
+    console.log(results)
   });    
 
-  srvalue = str
   console.log(srvalue)
   console.log(str)
   if(srvalue <= 30){
