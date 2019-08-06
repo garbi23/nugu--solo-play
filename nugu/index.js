@@ -185,7 +185,7 @@ class NPKRequest {
         console.log(srstat)
         console.log(srvalue)
 
-        const srtovalue = {srstat, srvalue}
+        let srtovalue = {tsrstat : srstat, tsrvalue : srvalue}
         npkResponse.setOutputsrvaluePar(srtovalue)
      });
     break    
@@ -222,9 +222,8 @@ class NPKResponse {
   }
   setOutputsrvaluePar(srtovalue){
     this.output = {
-    
-      nowwater: srtovalue.srvalue,
-      watersay: srtovalue.srstat
+      nowwater: srtovalue.tsrvalue,
+      watersay: srtovalue.tsrstat
     }
   }
 }
