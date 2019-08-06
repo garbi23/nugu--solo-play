@@ -23,15 +23,15 @@ function mysqlparsing(){
     if(err){throw err}
      
      srvalue = results
-
-     if(srvalue <= 30){
-       srstat = '물이 부족합니다! 어서 물을 주세요!'
-     }else if(srvalue > 30 || srvalue < 80){
-       srstat = '물이 적당합니다!'
-     }else if(srvalue >= 80){
-       srstat = '물이 충분합니다!'
-     }
   });
+
+   if(srvalue <= 30){
+     srstat = '물이 부족합니다! 어서 물을 주세요!'
+    }else if(srvalue > 30 && srvalue < 80){
+     srstat = '물이 적당합니다!'
+    }else{
+      srstat = '물이 충분합니다!'
+    }
 }
 
 
