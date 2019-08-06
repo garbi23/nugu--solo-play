@@ -186,6 +186,7 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
+
     var D_query = connection.query(Dupli_Query, function(err, rows, fields){
       if(err){
         throw err
@@ -203,9 +204,8 @@ class NPKRequest {
        }else{
         srstat = '물이 충분합니다!'
        }
+       npkResponse.setOutputsrvaluePar();
     });
-    
-        npkResponse.setOutputsrvaluePar();
     break    
     }
   }
