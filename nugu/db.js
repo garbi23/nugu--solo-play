@@ -3,6 +3,8 @@ var soil = {}
 let srstat = 0
 let srvalue = 0
 
+var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
+
 var connection = mysql.createConnection({
   host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
   user : 'root',
