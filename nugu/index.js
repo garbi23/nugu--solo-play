@@ -5,18 +5,6 @@ let gameon = 0
 let numbertwo = 0
 var mysql = require('mysql');
 
-
-var connection = mysql.createConnection({
-  host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
-  user : 'root',
-  password : 'xodnsqkqh233',
-  database : 'nugudb'
-});
-
-var Dupli_Query = "SELECT id FROM sensor WHERE id='srvalue'";   //쿼리문
-
-
-
 function threegameon(){
   gameon = 1
   numbertwo = 0
@@ -163,6 +151,16 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':
+     var connection = mysql.createConnection({
+          host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
+          user : 'root',
+          password : 'xodnsqkqh233',
+          database : 'nugudb'
+        });
+        
+     var Dupli_Query = "SELECT id FROM sensor WHERE id='srvalue'";   //쿼리문
+
+
       connection.connect();    //mysql 연결
       var D_query = connection.query(Dupli_Query, function(err, results){
         if(err){throw err}
