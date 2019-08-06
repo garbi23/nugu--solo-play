@@ -168,8 +168,8 @@ class NPKRequest {
           var D_query = connection.query(Dupli_Query, function(err, results){
             if(err){throw err}
 
-            var str = parseInt(results)
-            console.log(str)
+            srvalue = results;
+            console.log(srvalue)
             if(srvalue <= 30){
                 srstat = '물이 부족합니다! 어서 물을 주세요!'
             }else if(srvalue > 30 || srvalue < 80){
