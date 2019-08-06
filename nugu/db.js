@@ -14,16 +14,22 @@ var connection = mysql.createConnection({
 
 connection.connect()
 
-soil.value = function(){
+
+var revalue = setInterval(function()
+{
     connection.query(Dupli_Query, function(err, rows, fields){
-        if(err){
-          throw err
-        }
-        for(var i=0; i < rows.length; i++){
-          console.log(rows[i].srvalue)
+         if(err){
+           throw err
+         }
+         for(var i=0; i < rows.length; i++){
+           console.log(rows[i].srvalue)
           srvalue = rows[i].srvalue
-        }
+         }
       });
+},500);
+
+
+soil.value = function(){
 
       return srvalue;
 }

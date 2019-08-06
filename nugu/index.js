@@ -192,8 +192,8 @@ class NPKResponse {
   }
   setOutputsrvaluePar(){
     this.output = {
-      nowwater: soil.value(),
-      watersay: soil.stat()
+      nowwater: srvalue,
+      watersay: srstat
     }
   }
 }
