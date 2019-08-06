@@ -4,7 +4,8 @@ const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
 var mysql = require('mysql')
-
+let srvalue = 0
+let srstat = 0
 
 
 var connection = mysql.createConnection({
@@ -17,9 +18,6 @@ var connection = mysql.createConnection({
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 
 function mysqlcallback(err, rows, fields){
-
-  let srvalue = 0
-  let srstat = 0
 
   if(err){
     throw err
@@ -38,11 +36,11 @@ function mysqlcallback(err, rows, fields){
     srstat = '물이 충분합니다!'
    }
 
-   return {srvalue , srstat}
 
 }
 
 connection.connect()
+
 
 function threegameon(){
   gameon = 1
@@ -192,9 +190,6 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-     console.log(srstat)
-     connection.query(Dupli_Query ,mysqlcallback)
-     const tosrvalue = mysqlcallback()
      npkResponse.setOutputsrvaluePar(tosrvalue)
     break    
     }
@@ -228,10 +223,11 @@ class NPKResponse {
       clapnumber: clapnum.number,
     }
   }
-  setOutputsrvaluePar(tosrvalue){
+  setOutputsrvaluePar(){
+    connection.query(Dupli_Query ,mysqlcallback)
     this.output = {
-      nowwater: tosrvalue.srvalue,
-      watersay: tosrvalue.srstat
+      nowwater: srvalue,
+      watersay: srstat
     }
   }
 }
