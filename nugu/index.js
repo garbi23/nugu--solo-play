@@ -229,11 +229,14 @@ class NPKResponse {
     }
   }
 }
+setTimeout(function() {
+}, 3000);
+
   const nuguReq = function (httpReq, httpRes, next) {
-    npkResponse = new NPKResponse()
     setTimeout(function() {
-      npkRequest = new NPKRequest(httpReq)
+      npkResponse = new NPKResponse()
     }, 3000);
+    npkRequest = new NPKRequest(httpReq)
     npkRequest.do(npkResponse)
     console.log(`NPKResponse: ${JSON.stringify(npkResponse)}`)
     return httpRes.send(npkResponse)
