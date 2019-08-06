@@ -230,20 +230,18 @@ class NPKResponse {
   }
 }
 
-function nugureqfun(){
   const nuguReq = function (httpReq, httpRes, next) {
     npkResponse = new NPKResponse()
     npkRequest = new NPKRequest(httpReq)
-    npkRequest.do(npkResponse)
+    setTimeout(function() {
+      npkRequest.do(npkResponse)
+      }, 3000);
     console.log(`NPKResponse: ${JSON.stringify(npkResponse)}`)
     return httpRes.send(npkResponse)
   };
   
   module.exports = nuguReq;
-}
 
-setTimeout(function() {
-  nugureqfun()
-}, 1000);
+
 
   
