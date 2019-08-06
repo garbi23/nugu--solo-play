@@ -22,7 +22,6 @@ var revalue = setInterval(function()
            throw err
          }
          for(var i=0; i < rows.length; i++){
-           console.log(rows[i].srvalue)
           srvalue = rows[i].srvalue
          }
       });
