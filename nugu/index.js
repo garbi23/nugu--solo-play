@@ -33,6 +33,7 @@ function gameoff(){
 }
 
 function parsingsrvalue(){
+
   let srvalue = 0
   let srstat = 0
 
@@ -186,8 +187,8 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':  
-          const srtovalue = parsingsrvalue()
-          npkResponse.setOutputsrvaluePar(srtovalue)
+        const srtovalue = parsingsrvalue()
+        npkResponse.setOutputsrvaluePar(srtovalue)
     break    
     }
   }
