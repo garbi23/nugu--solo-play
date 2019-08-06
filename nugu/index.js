@@ -7,6 +7,7 @@ var mysql = require('mysql')
 let srvalue = 0
 let srstat = 0
 
+
 var connection = mysql.createConnection({
   host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
   user : 'root',
@@ -14,29 +15,32 @@ var connection = mysql.createConnection({
   database : 'nugudb'
 });
 
+var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 
-function mysqlparsing(){
-  console.log('mysql 파싱을 시작합니다')
-  
-  var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";   //쿼리문
-   var D_query = connection.query(Dupli_Query, function(err, results){
-    if(err){throw err}
-     
-     srvalue = results
-  });
+function mysqlcallback(err, rows, fields){
+  if(err){
+    throw err
 
-   if(srvalue <= 30){
-     srstat = '물이 부족합니다! 어서 물을 주세요!'
-    }else if(srvalue > 30 && srvalue < 80){
-     srstat = '물이 적당합니다!'
-    }else{
-      srstat = '물이 충분합니다!'
-    }
+  }
+  for(var i=0; i < rows.length; i++){
+    srvalue = rows[i].value 
+  }
+
+  if(srvalue <= 30){
+    srstat = '물이 부족합니다! 어서 물을 주세요!'
+   }else if(srvalue > 30 && srvalue < 80){
+    srstat = '물이 적당합니다!'
+   }else{
+    srstat = '물이 충분합니다!'
+   }
+
 }
 
 
+
+
 connection.connect()
-mysqlparsing()
+connection.query(Dupli_Query ,mysqlcallback)
 
 function threegameon(){
   gameon = 1
@@ -187,7 +191,7 @@ class NPKRequest {
     break
     case 'WATER_STATUE':  
 
-     mysqlparsing()
+     connection.query(Dupli_Query ,mysqlcallback)
      console.log(srstat)
      console.log(srvalue)
      npkResponse.setOutputsrvaluePar()
