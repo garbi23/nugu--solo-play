@@ -162,12 +162,12 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_STATUE':
-      
-      connection.connect();
-      var D_query = connection.query(Dupli_Query, function(err, results){
-        if(err){throw err}
-        console.log(results);    //결과값 출력
-      });
+        router.post('/nugudb', function(req, res, next) {
+          var D_query = connection.query(Dupli_Query, function(err, results){
+            if(err){throw err}
+            console.log(results);    //결과값 출력
+          });      
+        });
     break    
     }
   }
