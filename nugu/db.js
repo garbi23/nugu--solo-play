@@ -1,7 +1,9 @@
 var mysql = require('mysql')
 var soil = {}
 let srstat = 0
-let srvalue = 0
+let water = 0
+let temp = 0
+let humi = 0
 
 var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
 
@@ -21,22 +23,30 @@ var revalue = setInterval(function()
          if(err){
            throw err
          }
-         for(var i=0; i < rows.length; i++){
-          srvalue = rows[i].srvalue
-         }
+         water = rows[3].srvalue
+          temp = rows[1].srvalue
+          humi = rows[2].srvalue
       });
 },500);
 
 
 soil.value = function(){
 
-      return srvalue;
+      return water;
+}
+soil.tempvalue = function(){
+
+  return temp;
+}
+soil.humivalue = function(){
+
+  return humi;
 }
 
 soil.stat = function(){
-    if(srvalue <= 30){
+    if(water <= 30){
         srstat = '물이 부족합니다! 어서 물을 주세요!'
-       }else if(srvalue > 30 && srvalue < 80){
+       }else if(water > 30 && srvalue < 80){
         srstat = '물이 적당합니다!'
        }else{
         srstat = '물이 충분합니다!'

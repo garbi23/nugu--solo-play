@@ -6,7 +6,9 @@ let numbertwo = 0
 var soil = require("./db");
 let srvalue = soil.value();
 let srstat = soil.stat();
-
+let temp = soil.tempvalue();
+let humi = soil.humivalue();
+let soilkind = 0;
 
 
 function threegameon(){
@@ -145,7 +147,20 @@ class NPKRequest {
       }
       const clapnum = threesixnine(clapcount)
       npkResponse.setOutputclapPar(clapnum)
-    break         
+    break 
+    case 'WATER_ALL_ACTION':
+        if (!!parameters) {
+          const kindslot = parameters.WATER_COUNT
+          if (parameters.length != 0 && kindslot) {
+            if(isNaN(kindslot.value) == true){
+              soilkind = kindslot.value
+              console.log(kindslot)
+            }else{
+              soilkind = parseInt(kindslot.value)
+            }
+          }
+        }
+    break              
     case 'GAME_THREENINESIX':
         threegameon()
         npkResponse.setOutputgamevalue()
@@ -156,11 +171,26 @@ class NPKRequest {
     case 'GAMEACTION_STOP_INSERT':
         gameoff()
     break
-    case 'WATER_STATUE':  
+    case 'WATER_ALLSTAT':  
     srvalue = soil.value();
     srstat = soil.stat();
+    temp = soil.tempvalue();
+    humi = soil.humivalue();
     npkResponse.setOutputsrvaluePar()
-    break    
+    break 
+    case 'WATER_HUMI':  
+    humi = soil.humivalue();
+    npkResponse.setOutputwaterHUMI()
+    break
+    case 'WATER_TEMP':  
+    temp = soil.tempvalue();
+    npkResponse.setOutputwatertemp()
+    break
+    case 'WATER_STAT':  
+    srvalue = soil.value();
+    srstat = soil.stat();
+    npkResponse.setOutputwaterstat()
+    break               
     }
   }
 }
@@ -194,9 +224,27 @@ class NPKResponse {
   setOutputsrvaluePar(){
     this.output = {
       nowwater: srvalue,
-      watersay: srstat
+      watersay: srstat,
+      srtemp: temp,
+      srhumi: humi
     }
   }
+  setOutputwatertemp(){
+    this.output = {
+      tsrtemp: temp,
+    } 
+  }    
+  setOutputwaterhumi(){
+    this.output = {
+      hsrhumi: humi,
+    } 
+  }
+  setOutputwaterstat(){
+    this.output = {
+      nowwatersr: srvalue,
+      watersaysr: srstat
+    } 
+  }       
 }
   const nuguReq = function (httpReq, httpRes, next) {
     npkResponse = new NPKResponse()
