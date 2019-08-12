@@ -180,7 +180,7 @@ class NPKRequest {
     break 
     case 'WATER_HUMI':  
     humi = soil.humivalue();
-    npkResponse.setOutputwaterHUMI()
+    npkResponse.setOutputwaterhumi()
     break
     case 'WATER_TEMP':  
     temp = soil.tempvalue();
