@@ -23,9 +23,9 @@ var revalue = setInterval(function()
          if(err){
            throw err
          }
-         srvalue = rows[3].srvalue
-          temp = rows[1].srvalue
-          humi = rows[2].srvalue
+          srvalue = rows[2].srvalue
+          temp = rows[0].srvalue
+          humi = rows[1].srvalue
       });
 },500);
 
