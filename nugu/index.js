@@ -159,7 +159,17 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_ALLSTAT':  
-    getkind();
+    if (!!parameters) {
+      const kindslot = parameters.WATER_COUNT
+      if (parameters.length != 0 && kindslot) {
+        if(isNaN(kindslot.value) == true){
+          soilkind = kindslot.value
+          console.log(kindslot)
+        }else{
+          soilkind = parseInt(kindslot.value)
+        }
+      }
+    }
     srvalue = soil.value();
     srstat = soil.stat();
     temp = soil.tempvalue();
@@ -167,17 +177,47 @@ class NPKRequest {
     npkResponse.setOutputsrvaluePar()
     break 
     case 'WATER_HUMI':  
-    getkind();
+    if (!!parameters) {
+      const kindslot = parameters.WATER_COUNT
+      if (parameters.length != 0 && kindslot) {
+        if(isNaN(kindslot.value) == true){
+          soilkind = kindslot.value
+          console.log(kindslot)
+        }else{
+          soilkind = parseInt(kindslot.value)
+        }
+      }
+    }
     humi = soil.humivalue();
     npkResponse.setOutputwaterhumi()
     break
     case 'WATER_TEMP':  
-    getkind();
+    if (!!parameters) {
+      const kindslot = parameters.WATER_COUNT
+      if (parameters.length != 0 && kindslot) {
+        if(isNaN(kindslot.value) == true){
+          soilkind = kindslot.value
+          console.log(kindslot)
+        }else{
+          soilkind = parseInt(kindslot.value)
+        }
+      }
+    }
     temp = soil.tempvalue();
     npkResponse.setOutputwatertemp()
     break
     case 'WATER_STAT':  
-    getkind();
+    if (!!parameters) {
+      const kindslot = parameters.WATER_COUNT
+      if (parameters.length != 0 && kindslot) {
+        if(isNaN(kindslot.value) == true){
+          soilkind = kindslot.value
+          console.log(kindslot)
+        }else{
+          soilkind = parseInt(kindslot.value)
+        }
+      }
+    }
     srvalue = soil.value();
     srstat = soil.stat();
     npkResponse.setOutputwaterstat()
@@ -186,20 +226,6 @@ class NPKRequest {
   }
 }
 
-function getkind()
-{
-  if (!!parameters) {
-    const kindslot = parameters.WATER_COUNT
-    if (parameters.length != 0 && kindslot) {
-      if(isNaN(kindslot.value) == true){
-        soilkind = kindslot.value
-        console.log(kindslot)
-      }else{
-        soilkind = parseInt(kindslot.value)
-      }
-    }
-  }
-}
 
 class NPKResponse {
   constructor () {
