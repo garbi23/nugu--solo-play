@@ -1,7 +1,7 @@
 var mysql = require('mysql')
 var soil = {}
 let srstat = 0
-let water = 0
+let srvalue = 0
 let temp = 0
 let humi = 0
 
@@ -23,7 +23,7 @@ var revalue = setInterval(function()
          if(err){
            throw err
          }
-         water = rows[3].srvalue
+         srvalue = rows[3].srvalue
           temp = rows[1].srvalue
           humi = rows[2].srvalue
       });
@@ -32,7 +32,7 @@ var revalue = setInterval(function()
 
 soil.value = function(){
 
-  return water;
+  return srvalue;
 }
 soil.tempvalue = function(){
 
@@ -44,9 +44,9 @@ soil.humivalue = function(){
 }
 
 soil.stat = function(){
-    if(water <= 30){
+    if(srvalue <= 30){
         srstat = '물이 부족합니다! 어서 물을 주세요!'
-       }else if(water > 30 && water < 80){
+       }else if(srvalue > 30 && srvalue < 80){
         srstat = '물이 적당합니다!'
        }else{
         srstat = '물이 충분합니다!'
