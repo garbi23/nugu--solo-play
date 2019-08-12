@@ -5,7 +5,7 @@ let srvalue = 0
 let temp = 0
 let humi = 0
 
-var Dupli_Query = "SELECT DISTINCT srvalue FROM sensor;";
+var Dupli_Query = "SELECT * FROM nugudb.sensor;";
 
 var connection = mysql.createConnection({
   host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
