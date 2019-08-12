@@ -147,20 +147,7 @@ class NPKRequest {
       }
       const clapnum = threesixnine(clapcount)
       npkResponse.setOutputclapPar(clapnum)
-    break 
-    case 'WATER_ALL_ACTION':
-        if (!!parameters) {
-          const kindslot = parameters.WATER_COUNT
-          if (parameters.length != 0 && kindslot) {
-            if(isNaN(kindslot.value) == true){
-              soilkind = kindslot.value
-              console.log(kindslot)
-            }else{
-              soilkind = parseInt(kindslot.value)
-            }
-          }
-        }
-    break              
+    break            
     case 'GAME_THREENINESIX':
         threegameon()
         npkResponse.setOutputgamevalue()
@@ -172,6 +159,7 @@ class NPKRequest {
         gameoff()
     break
     case 'WATER_ALLSTAT':  
+    getkind();
     srvalue = soil.value();
     srstat = soil.stat();
     temp = soil.tempvalue();
@@ -179,18 +167,36 @@ class NPKRequest {
     npkResponse.setOutputsrvaluePar()
     break 
     case 'WATER_HUMI':  
+    getkind();
     humi = soil.humivalue();
     npkResponse.setOutputwaterhumi()
     break
     case 'WATER_TEMP':  
+    getkind();
     temp = soil.tempvalue();
     npkResponse.setOutputwatertemp()
     break
     case 'WATER_STAT':  
+    getkind();
     srvalue = soil.value();
     srstat = soil.stat();
     npkResponse.setOutputwaterstat()
     break               
+    }
+  }
+}
+
+function getkind()
+{
+  if (!!parameters) {
+    const kindslot = parameters.WATER_COUNT
+    if (parameters.length != 0 && kindslot) {
+      if(isNaN(kindslot.value) == true){
+        soilkind = kindslot.value
+        console.log(kindslot)
+      }else{
+        soilkind = parseInt(kindslot.value)
+      }
     }
   }
 }
