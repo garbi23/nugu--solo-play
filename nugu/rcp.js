@@ -1,13 +1,8 @@
 var computerChoice = Math.random();
 let rcp = {}
-var rcpon = require("./index");
-var rcponresult = 0;
 
 rcp.rcpgmae = function(choice1){
 
-    rcponresult = rcpon.rcpcallon();
-
-if(rcponresult == 1){
     if (computerChoice < 0.34) {
         computerChoice = "바위";
 
@@ -46,9 +41,6 @@ if(rcponresult == 1){
             return "주인님이 이겼어요, 유,유,유";
         }
     }
-}else{
-    return "가위바위보 게임이 시작되지 않았습니다."
-}
 }
 
 module.exports = rcp;

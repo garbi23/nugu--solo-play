@@ -237,15 +237,15 @@ class NPKRequest {
     if (!!parameters) {
       const rcpkind = parameters.RCP_RESULT
       if (parameters.length != 0 && rcpkind) {
-        if(isNaN(rcpkind.value) == true){
-          soilkind = rcpkind.value
+        if(rcpon == 1){
           rcpresult = rcp.rcpgmae(rcpkind.value);
           console.log(rcpkind)
         }else{
-          rcpresult = rcp.rcpgmae(rcpkind.value);
+          rcpresult = "가위바위보 게임이 시작하지 않았어요!";
         }
       }
-    }    
+    }
+    npkResponse.setOutputrcpanswer();    
     break                   
     }
   }
