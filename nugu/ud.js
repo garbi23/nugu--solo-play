@@ -6,6 +6,7 @@ let result = 0
 ud.udoption = function(num){
     numchoice = (Math.floor(Math.random() * num) + 1)
     console.log(numchoice)
+    return numchoice
 }
 
 ud.udgame = function(num){
