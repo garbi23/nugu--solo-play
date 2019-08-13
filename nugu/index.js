@@ -155,6 +155,7 @@ class NPKRequest {
       npkResponse.setOutputclapPar(clapnum)
     break            
     case 'GAME_THREENINESIX':
+        gameoff()
         threegameon()
         npkResponse.setOutputgamevalue()
     break  
@@ -229,9 +230,11 @@ class NPKRequest {
     npkResponse.setOutputwaterstat()
     break
     case 'GAME_RCP':  
+      gameoff()
       rcpon = 1;
     break  
-    case 'GAME_SORA':  
+    case 'GAME_SORA':
+      gameoff()  
       soraon = 1;
     break    
     case 'RCP_ANSWER':  
