@@ -17,6 +17,8 @@ let rcpon = 0;
 let soraon  = 0;
 let udopon =0;
 let udgaon =0;
+let udch = 0;
+let udmax = 0;
 
 function threegameon(){
   gameon = 1
@@ -249,9 +251,12 @@ class NPKRequest {
           if (parameters.length != 0 && rcpkind) {
             if(udgaon == 1){
               udopon = 1
+              udch = Math.floor(rcpkind.value/10 + 1);
               ud.udoption(rcpkind.value);
-              uno  = "1 에서 " + rcpkind.value +" 까지 업다운 설정이 완료되었습니다, 업다운 숫자 형태로 말해주세요!, 업다운 시작합니다!, 숫자를 말해주세요!"
-              console.log(rcpkind)
+              udmax = rcpkind.value
+              uno  = "1 에서 " + rcpkind.value +" 까지 업다운 설정이 완료되었습니다, 총기회는 "+ udch 
+              + "번 입니다, 업다운 숫자 형태로 말해주세요!, 업다운 시작합니다!, 숫자를 말해주세요!"
+              console.log(rcpkind.value)
             }else{
               uno = "업다운 게임이 시작하지 않았어요!";
             }
@@ -265,7 +270,12 @@ class NPKRequest {
           const rcpkind = parameters.UPDOWN_NUM1
           if (parameters.length != 0 && rcpkind) {
             if(udopon == 1){
+              if(udch != 0){
               unn = ud.udgame(rcpkind.value);
+              udch--;
+              }else{
+                unn = "기회를 다 사용하셨어요!, 정답은" +udmax+ "였어요!";
+              }
             }else{
               unn = "업다운 설정이되지 않았어요!";
             }
