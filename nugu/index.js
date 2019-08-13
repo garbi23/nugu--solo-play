@@ -12,7 +12,7 @@ let humi = soil.humivalue();
 let rcpresult = 0;
 let soilkind = 0;
 let rcpon = 0;
-let rcpcall = {}
+
 
 function threegameon(){
   gameon = 1
@@ -30,10 +30,6 @@ function gameoff(){
   console.log(gameon)
 }
 
-
-rcpcall.rcpcallon = function(){
-  return rcpon
-}
 
 
 function threesixnine(numberone){
@@ -319,7 +315,6 @@ class NPKResponse {
   };
   
   module.exports = nuguReq;
-  module.exports = rcpcall;
 
 
 
