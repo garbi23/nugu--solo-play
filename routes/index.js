@@ -16,6 +16,9 @@ router.post(`/nugu/GAME_RCP`, nugu);
 router.post(`/nugu/RCP_ANSWER`, nugu);
 router.post(`/nugu/GAME_SORA`, nugu);
 router.post(`/nugu/SORA_ANSWER`, nugu);
+router.post(`/nugu/GAME_UPDOWN`, nugu);
+router.post(`/nugu/UPDOWN_NEXT_OP`, nugu);
+router.post(`/nugu/UPDOWN_NEXT_NUM`, nugu);
 
 
 

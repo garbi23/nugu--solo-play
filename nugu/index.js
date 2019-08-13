@@ -6,6 +6,7 @@ let numbertwo = 0
 var soil = require("./db");
 var rcp = require("./rcp");
 var sora = require("./sora");
+var ud = require("./ud");
 let srvalue = soil.value();
 let srstat = soil.stat();
 let temp = soil.tempvalue();
@@ -14,6 +15,8 @@ let rcpresult = 0;
 let soilkind = 0;
 let rcpon = 0;
 let soraon  = 0;
+let udopon =0;
+let udgaon =0;
 
 function threegameon(){
   gameon = 1
@@ -24,6 +27,8 @@ function threegameon(){
 
 
 function gameoff(){
+  udgaon = 0;
+  udopon = 0;
   soraon = 0
   rcpon = 0
   gameon = 0
@@ -232,7 +237,42 @@ class NPKRequest {
     case 'GAME_RCP':  
       gameoff()
       rcpon = 1;
-    break  
+    break
+    case 'GAME_UPDOWN':  
+      gameoff()
+      udgaon = 1;
+    break
+    case 'UPDOWN_NEXT_OP':  
+      let uno = 0;
+        if (!!parameters) {
+          const rcpkind = parameters.UPDOWN_NUM1
+          if (parameters.length != 0 && rcpkind) {
+            if(udgaon == 1){
+              udopon = 1
+              ud.udoption(rcpkind.value);
+              uno  = "0 에서 " + rcpkind.value +" 까지 업다운 설정이 완료되었습니다, 업다운 숫자 형태로 말해주세요!, 업다운 시작합니다!, 숫자를 말해주세요!"
+              console.log(rcpkind)
+            }else{
+              uno = "업다운 게임이 시작하지 않았어요!";
+            }
+          }
+        }
+        npkResponse.setOutputuno(uno);
+    break   
+    case 'UPDOWN_NEXT_NUM':  
+      let uno = 0;
+        if (!!parameters) {
+          const rcpkind = parameters.UPDOWN_NUM1
+          if (parameters.length != 0 && rcpkind) {
+            if(udopon == 1){
+              uno = ud.udgame(rcpkind.value);
+            }else{
+              uno = "업다운 설정이되지 않았어요!";
+            }
+          }
+        }
+        npkResponse.setOutputunn(uno);
+    break             
     case 'GAME_SORA':
       gameoff()  
       soraon = 1;
@@ -326,7 +366,17 @@ class NPKResponse {
     this.output = {
       soran: soranswer,
     } 
-  }    
+  }   
+  setOutputuno(soranswer){
+    this.output = {
+      udgame: soranswer,
+    } 
+  }     
+  setOutputunn(soranswer){
+    this.output = {
+      udresult: soranswer,
+    } 
+  }   
 }
   const nuguReq = function (httpReq, httpRes, next) {
     npkResponse = new NPKResponse()
