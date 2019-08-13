@@ -1,10 +1,10 @@
-let numchoice = 0
+var numchoice = 0
 let ud = {}
 let result = 0
 
 
 ud.udoption = function(num){
-    numchoice = (Math.random() * (num + 1))
+    numchoice = (Math.floor(Math.random() * num) + 1)
     console.log(numchoice)
 }
 

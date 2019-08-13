@@ -250,7 +250,7 @@ class NPKRequest {
             if(udgaon == 1){
               udopon = 1
               ud.udoption(rcpkind.value);
-              uno  = "0 에서 " + rcpkind.value +" 까지 업다운 설정이 완료되었습니다, 업다운 숫자 형태로 말해주세요!, 업다운 시작합니다!, 숫자를 말해주세요!"
+              uno  = "1 에서 " + rcpkind.value +" 까지 업다운 설정이 완료되었습니다, 업다운 숫자 형태로 말해주세요!, 업다운 시작합니다!, 숫자를 말해주세요!"
               console.log(rcpkind)
             }else{
               uno = "업다운 게임이 시작하지 않았어요!";
