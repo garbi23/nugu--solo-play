@@ -5,6 +5,7 @@ let gameon = 0
 let numbertwo = 0
 var soil = require("./db");
 var rcp = require("./rcp");
+var sora = require("./sora");
 let srvalue = soil.value();
 let srstat = soil.stat();
 let temp = soil.tempvalue();
@@ -12,7 +13,7 @@ let humi = soil.humivalue();
 let rcpresult = 0;
 let soilkind = 0;
 let rcpon = 0;
-
+let soraon  = 0;
 
 function threegameon(){
   gameon = 1
@@ -23,6 +24,7 @@ function threegameon(){
 
 
 function gameoff(){
+  soraon = 0
   rcpon = 0
   gameon = 0
   numbertwo = 0
@@ -229,6 +231,9 @@ class NPKRequest {
     case 'GAME_RCP':  
       rcpon = 1;
     break  
+    case 'GAME_SORA':  
+      soraon = 1;
+    break    
     case 'RCP_ANSWER':  
     if (!!parameters) {
       const rcpkind = parameters.RCP_RESULT
@@ -242,7 +247,11 @@ class NPKRequest {
       }
     }
     npkResponse.setOutputrcpanswer();    
-    break                   
+    break
+    case 'SORA_ANSWER':  
+      let soranswer = sora.soragame();
+      npkResponse.setOutputsoraanswer(soranswer);  
+    break                        
     }
   }
 }
@@ -304,7 +313,12 @@ class NPKResponse {
     this.output = {
       brcpresult: rcpresult,
     } 
-  }         
+  }        
+  setOutputsoraanswer(soranswer){
+    this.output = {
+      soran: soranswer,
+    } 
+  }    
 }
   const nuguReq = function (httpReq, httpRes, next) {
     npkResponse = new NPKResponse()
