@@ -4,12 +4,15 @@ const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
 var soil = require("./db");
+var rcp = require("./rcp");
 let srvalue = soil.value();
 let srstat = soil.stat();
 let temp = soil.tempvalue();
 let humi = soil.humivalue();
+let rcpresult = 0;
 let soilkind = 0;
-
+let rcpon = 0;
+let rcpcall = {}
 
 function threegameon(){
   gameon = 1
@@ -20,12 +23,17 @@ function threegameon(){
 
 
 function gameoff(){
+  rcpon = 0
   gameon = 0
   numbertwo = 0
   console.log('-----------게임종료-----------')
   console.log(gameon)
 }
 
+
+rcpcall.rcpcallon = function(){
+  return rcpon
+}
 
 
 function threesixnine(numberone){
@@ -221,10 +229,29 @@ class NPKRequest {
     srvalue = soil.value();
     srstat = soil.stat();
     npkResponse.setOutputwaterstat()
-    break               
+    break
+    case 'GAME_RCP':  
+      rcpon = 1;
+    break  
+    case 'RCP_ANSWER':  
+    if (!!parameters) {
+      const rcpkind = parameters.RCP_RESULT
+      if (parameters.length != 0 && rcpkind) {
+        if(isNaN(rcpkind.value) == true){
+          soilkind = rcpkind.value
+          rcpresult = rcp.rcpgmae(rcpkind.value);
+          console.log(rcpkind)
+        }else{
+          rcpresult = rcp.rcpgmae(rcpkind.value);
+        }
+      }
+    }    
+    break                   
     }
   }
 }
+
+
 
 
 class NPKResponse {
@@ -276,7 +303,12 @@ class NPKResponse {
       nowwatersr: srvalue,
       watersaysr: srstat
     } 
-  }       
+  }
+  setOutputrcpanswer(){
+    this.output = {
+      brcpresult: rcpresult,
+    } 
+  }         
 }
   const nuguReq = function (httpReq, httpRes, next) {
     npkResponse = new NPKResponse()
@@ -287,6 +319,7 @@ class NPKResponse {
   };
   
   module.exports = nuguReq;
+  module.exports = rcpcall;
 
 
 

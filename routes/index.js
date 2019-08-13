@@ -12,6 +12,7 @@ router.post(`/nugu/WATER_STAT`, nugu);
 router.post(`/nugu/WATER_TEMP`, nugu);
 router.post(`/nugu/WATER_HUMI`, nugu);
 router.post(`/nugu/WATER_ALL_ACTION`, nugu);
+router.post(`/nugu/GAME_RCP`, nugu);
 
 
 module.exports = router;
