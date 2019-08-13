@@ -260,18 +260,18 @@ class NPKRequest {
         npkResponse.setOutputuno(uno);
     break   
     case 'UPDOWN_NEXT_NUM':  
-      let uno = 0;
+      let unn = 0;
         if (!!parameters) {
           const rcpkind = parameters.UPDOWN_NUM1
           if (parameters.length != 0 && rcpkind) {
             if(udopon == 1){
-              uno = ud.udgame(rcpkind.value);
+              unn = ud.udgame(rcpkind.value);
             }else{
-              uno = "업다운 설정이되지 않았어요!";
+              unn = "업다운 설정이되지 않았어요!";
             }
           }
         }
-        npkResponse.setOutputunn(uno);
+        npkResponse.setOutputunn(unn);
     break             
     case 'GAME_SORA':
       gameoff()  
