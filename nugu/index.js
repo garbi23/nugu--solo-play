@@ -249,8 +249,13 @@ class NPKRequest {
     npkResponse.setOutputrcpanswer();    
     break
     case 'SORA_ANSWER':  
-      let soranswer = sora.soragame();
-      npkResponse.setOutputsoraanswer(soranswer);  
+    let soranswer = 0;
+    if(soraon == 1){
+      soranswer = sora.soragame(); 
+    }else{
+      soranswer = "마법의소라고둥 게임이 시작하지 않았어요!";
+    }
+    npkResponse.setOutputsoraanswer(soranswer); 
     break                        
     }
   }
