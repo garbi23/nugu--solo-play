@@ -273,7 +273,7 @@ class NPKRequest {
               unn = ud.udgame(rcpkind.value);
               udch--;
               }else{
-                unn = "기회를 다 사용하셨어요!, 정답은" +udrand+ "였어요!";
+                unn = "기회를 다 사용하셨어요!, 정답은" +udrand+ "였어요! 다시 하실려면 업다운 설정을 해주세요!";
               }
             }else{
               unn = "업다운 설정이되지 않았어요!";

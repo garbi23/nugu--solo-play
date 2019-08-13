@@ -12,7 +12,7 @@ ud.udoption = function(num){
 ud.udgame = function(num){
     
     if(num == numchoice){
-        result = numchoice + "!, 축하해요! 맞췄어요!"
+        result = numchoice + "!, 축하해요! 맞췄어요! 다시 하실려면 업다운 설정을 해주세요!"
     }else if(num > numchoice){
         result = "다운"
     }else{
