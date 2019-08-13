@@ -21,7 +21,7 @@ rcp.rcpgmae = function(choice1){
         if (choice1 == "바위"){
             if (computerChoice == "가위"){
                 
-                return "저는 " + computerChoice + "! ,주인님이 이겼어요, 유,유,유";
+                return "저는 " + computerChoice + "! ,주인님이 이겼어요,";
         }else{
             return "저는 " + computerChoice + "! ,제가 이겼어용 헤헷!";
         }
@@ -31,7 +31,7 @@ rcp.rcpgmae = function(choice1){
         if (computerChoice == "가위"){
             return "저는 " + computerChoice + "! ,제가 이겼어용 헤헷!";
         }else{
-            return "저는 " + computerChoice + "! ,주인님이 이겼어요, 유,유,유";
+            return "저는 " + computerChoice + "! ,주인님이 이겼어요,";
         }
     }
 
@@ -39,7 +39,7 @@ rcp.rcpgmae = function(choice1){
         if (computerChoice == "바위"){
             return "저는 " + computerChoice + "! ,제가 이겼어용 헤헷!";
         }else {
-            return "저는 " + computerChoice + "! ,주인님이 이겼어요, 유,유,유";
+            return "저는 " + computerChoice + "! ,주인님이 이겼어요,";
         }
     }
 }
