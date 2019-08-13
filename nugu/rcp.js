@@ -15,7 +15,7 @@ rcp.rcpgmae = function(choice1){
         console.log("Computer: " + computerChoice);
 
     if (choice1 == computerChoice){
-        return "저는" + computerChoice + "결과는 무승부에요!";
+        return "저는 " + computerChoice + "! ,결과는 무승부에요!";
     }
 
         if (choice1 == "바위"){
