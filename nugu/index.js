@@ -278,10 +278,10 @@ class NPKRequest {
               unn = ud.udgame(rcpkind.value);
               udch--;
               }else{
-                unn = "기회를 다 사용하셨어요!, 정답은" +udrand+ "였어요! 다시 하실려면 업다운 설정을 해주세요!";
+               unn = "기회를 다 사용하셨어요!, 정답은" +udrand+ "였어요! 다시 하실려면 업다운 설정을 해주세요!";
               }
             }else{
-              unn = "업다운 설정이되지 않았어요!";
+               unn = "업다운 설정이되지 않았어요!";
             }
           }
         }
@@ -321,36 +321,36 @@ class NPKRequest {
       ruon = 1
     break
     case 'RU_OP':  
-      let uno = 0;
+      let ruo = 0;
         if (!!parameters) {
           const rcpkind = parameters.UPDOWN_NUM1
           if (parameters.length != 0 && rcpkind) {
             if(ruon == 1){
               ruopon = 1
-              udrand = ru.ruchoice(rcpkind.value)
-              uno  = "러시안 룰렛. 인원수,"+ rcpkind.value + ", 명으로 설정 되었습니다."+ 
+              ru.ruchoice(rcpkind.value)
+              ruo  = "러시안 룰렛. 인원수,"+ rcpkind.value + ", 명으로 설정 되었습니다."+ 
               "게임을 시작합니다.! 러시안룰렛, 발사, 숫자, 형태로 말해주세요!"
               console.log(rcpkind.value)
             }else{
-              uno = "러시안룰렛 게임이 시작하지 않았어요!";
+              ruo = "러시안룰렛 게임이 시작하지 않았어요!";
             }
           }
         }
-        npkResponse.setOutputruop(uno);
+        npkResponse.setOutputruop(ruo);
     break
     case 'UPDOWN_NEXT_NUM':  
-      let unn = 0;
+      let run = 0;
         if (!!parameters) {
           const rcpkind = parameters.UPDOWN_NUM1
           if (parameters.length != 0 && rcpkind) {
             if(ruopon == 1){
-              unn = ru.rugame(rcpkind.value)
+              run = ru.rugame(rcpkind.value)
             }else{
-              unn = "러시안루렛이 장전되지 않았어요!";
+              run = "러시안루렛이 장전되지 않았어요!";
             }
           }
         }
-        npkResponse.setOutputrushoot(unn);
+        npkResponse.setOutputrushoot(run);
     break                                        
     }
   }
