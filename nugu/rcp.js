@@ -1,7 +1,7 @@
-var computerChoice = Math.random();
-let rcp = {}
 
+let rcp = {}
 rcp.rcpgmae = function(choice1){
+    var computerChoice = Math.random();
 
     if (computerChoice < 0.34) {
         computerChoice = "바위";
@@ -27,7 +27,7 @@ rcp.rcpgmae = function(choice1){
         }
     }
 
-    if (choice1 == "보자기"){
+    if (choice1 == "보"){
         if (computerChoice == "가위"){
             return "저는 " + computerChoice + "! ,제가 이겼어용 헤헷!";
         }else{
