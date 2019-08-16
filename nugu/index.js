@@ -5,7 +5,8 @@ let gameon = 0
 let numbertwo = 0
 var soil = require("./db");
 var rcp = require("./rcp");
-var sora = require("./sora");
+var ru = require("./rusian");
+var coin = require("./coin");
 var ud = require("./ud");
 let srvalue = soil.value();
 let srstat = soil.stat();
@@ -14,11 +15,13 @@ let humi = soil.humivalue();
 let rcpresult = 0;
 let soilkind = 0;
 let rcpon = 0;
-let soraon  = 0;
 let udopon =0;
 let udgaon =0;
 let udch = 0;
 let udrand = 0;
+let coinon = 0;
+let ruon = 0;
+let ruopon = 0;
 
 function threegameon(){
   gameon = 1
@@ -29,9 +32,11 @@ function threegameon(){
 
 
 function gameoff(){
+  ruopon = 0
+  ruon = 0
+  coinon = 0
   udgaon = 0;
   udopon = 0;
-  soraon = 0
   rcpon = 0
   gameon = 0
   numbertwo = 0
@@ -281,11 +286,7 @@ class NPKRequest {
           }
         }
         npkResponse.setOutputunn(unn);
-    break             
-    case 'GAME_SORA':
-      gameoff()  
-      soraon = 1;
-    break    
+    break              
     case 'RCP_ANSWER':  
     if (!!parameters) {
       const rcpkind = parameters.RCP_RESULT
@@ -300,15 +301,57 @@ class NPKRequest {
     }
     npkResponse.setOutputrcpanswer();    
     break
-    case 'SORA_ANSWER':  
-    let soranswer = 0;
-    if(soraon == 1){
-      soranswer = sora.soragame(); 
-    }else{
-      soranswer = "마법의소라고둥 게임이 시작하지 않았어요!";
-    }
-    npkResponse.setOutputsoraanswer(soranswer); 
-    break                        
+    case 'GAME_COIN': 
+      gameoff() 
+      coinon = 1
+    break
+    case 'COIN_THROW': 
+      let coinresult;
+      if(coinon == 1){
+        coinresult = "동전을 던졌습니다! 결과는?,,,, 짜잔!, " + coin.coingame() +", 입니다!"
+        
+      }else{
+        coinresult = "코인던지기 게임이 시작되지 않았습니다."
+      }
+
+    npkResponse.setOutputcointhrow(coinresult)
+    break 
+    case 'GAME_RU': 
+      gameoff() 
+      ruon = 1
+    break
+    case 'RU_OP':  
+      let uno = 0;
+        if (!!parameters) {
+          const rcpkind = parameters.UPDOWN_NUM1
+          if (parameters.length != 0 && rcpkind) {
+            if(ruon == 1){
+              ruopon = 1
+              udrand = ru.ruchoice(rcpkind.value)
+              uno  = "러시안 룰렛. 인원수,"+ rcpkind.value + ", 명으로 설정 되었습니다."+ 
+              "게임을 시작합니다.! 러시안룰렛, 발사, 숫자, 형태로 말해주세요!"
+              console.log(rcpkind.value)
+            }else{
+              uno = "러시안룰렛 게임이 시작하지 않았어요!";
+            }
+          }
+        }
+        npkResponse.setOutputruop(uno);
+    break
+    case 'UPDOWN_NEXT_NUM':  
+      let unn = 0;
+        if (!!parameters) {
+          const rcpkind = parameters.UPDOWN_NUM1
+          if (parameters.length != 0 && rcpkind) {
+            if(ruopon == 1){
+              unn = ru.rugame(rcpkind.value)
+            }else{
+              unn = "러시안루렛이 장전되지 않았어요!";
+            }
+          }
+        }
+        npkResponse.setOutputrushoot(unn);
+    break                                        
     }
   }
 }
@@ -370,12 +413,7 @@ class NPKResponse {
     this.output = {
       brcpresult: rcpresult,
     } 
-  }        
-  setOutputsoraanswer(soranswer){
-    this.output = {
-      soran: soranswer,
-    } 
-  }   
+  }           
   setOutputuno(soranswer){
     this.output = {
       udgame: soranswer,
@@ -385,7 +423,22 @@ class NPKResponse {
     this.output = {
       udresult: soranswer,
     } 
-  }   
+  }
+  setOutputcointhrow(soranswer){
+    this.output = {
+      coinresult: soranswer,
+    } 
+  }
+  setOutputruop(soranswer){
+    this.output = {
+      ruoption: soranswer,
+    } 
+  }
+  setOutputrushoot(soranswer){
+    this.output = {
+      ruresult: soranswer,
+    } 
+  }            
 }
   const nuguReq = function (httpReq, httpRes, next) {
     npkResponse = new NPKResponse()
