@@ -1,6 +1,7 @@
 var numchoice = 0
 let ru = {}
 let result = 0
+let num = 0;
 
 
 ru.ruchoice = function(num){
@@ -9,8 +10,10 @@ ru.ruchoice = function(num){
     return numchoice
 }
 
-ru.rugame = function(num){
+ru.rugame = function(){
     
+    num++
+
     if(num == numchoice){
         result = "빵,야!, 당첨 되셨습니다!"
     }else{
@@ -18,6 +21,7 @@ ru.rugame = function(num){
     }
 
     return result
+
 
 }
 
