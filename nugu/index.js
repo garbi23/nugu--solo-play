@@ -338,7 +338,7 @@ class NPKRequest {
         }
         npkResponse.setOutputruop(ruo);
     break
-    case 'UPDOWN_NEXT_NUM':  
+    case 'RU_SHOOT':  
       let run = 0;
             if(ruopon == 1){
               run = ru.rugame()
