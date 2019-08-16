@@ -18,7 +18,7 @@ ru.rugame = function(){
     now++
 
     if(now == runumchoice){
-        result = "빵야!, 당첨 되셨습니다! 다시 하실려면 장전 해주세요!"
+        result = "빵!야!, 당첨 되셨습니다! 다시 하실려면 장전 해주세요!"
         ruson = 0
     }else{
         result = "휴...., 총알이 없어요!"
