@@ -7,7 +7,7 @@ rcp.rcpgmae = function(choice1){
         computerChoice = "바위";
 
     }else if(computerChoice <= 0.67) {
-        computerChoice = "보";
+        computerChoice = "보자기";
 
     } else {
         computerChoice = "가위";
@@ -27,7 +27,7 @@ rcp.rcpgmae = function(choice1){
         }
     }
 
-    if (choice1 == "보"){
+    if (choice1 == "보자기"){
         if (computerChoice == "가위"){
             return "저는 " + computerChoice + "! ,제가 이겼어용 헤헷!";
         }else{
