@@ -323,7 +323,7 @@ class NPKRequest {
     case 'RU_OP':  
       let ruo = 0;
         if (!!parameters) {
-          const rcpkind = parameters.UPDOWN_NUM1
+          const rcpkind = parameters.RU_NUMBER
           if (parameters.length != 0 && rcpkind) {
             if(ruon == 1){
               ruopon = 1
