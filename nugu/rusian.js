@@ -10,6 +10,7 @@ ru.ruchoice = function(num){
     now = 0
     runumchoice = (Math.floor(Math.random() * num) + 1)
     console.log(runumchoice)
+    ruson = 1
     return runumchoice
 }
 
