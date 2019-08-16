@@ -340,7 +340,7 @@ class NPKRequest {
     break
     case 'RU_SHOOT':  
       let run = 0;
-            if(ruopon == 1){
+            if(ruopon == 1 && ru.reson() == 1){
               run = ru.rugame()
             }else{
               run = "러시안룰렛이 장전되지 않았어요!";
