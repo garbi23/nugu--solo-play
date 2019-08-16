@@ -341,7 +341,7 @@ class NPKRequest {
     case 'UPDOWN_NEXT_NUM':  
       let run = 0;
             if(ruopon == 1){
-              run = ru.rugame(rcpkind.value)
+              run = ru.rugame()
             }else{
               run = "러시안룰렛이 장전되지 않았어요!";
             }
