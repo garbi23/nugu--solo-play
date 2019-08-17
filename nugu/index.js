@@ -329,7 +329,7 @@ class NPKRequest {
               ruopon = 1
               ru.ruchoice(rcpkind.value)
               ruo  = "러시안 룰렛. 인원수,"+ rcpkind.value + ", 명으로 설정 되었습니다."+ 
-              "게임을 시작합니다.! 러시안룰렛, 발사, 형태로 말해주세요!"
+              "게임을 시작합니다.! 당겨, 라고 말해주세요!"
               console.log(rcpkind.value)
             }else{
               ruo = "러시안룰렛 게임이 시작하지 않았어요!";
