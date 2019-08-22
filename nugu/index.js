@@ -3,17 +3,13 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 let gameon = 0
 let numbertwo = 0
-var soil = require("./db");
-var rcp = require("./rcp");
-var ru = require("./rusian");
-var coin = require("./coin");
-var ud = require("./ud");
-let srvalue = soil.value();
-let srstat = soil.stat();
-let temp = soil.tempvalue();
-let humi = soil.humivalue();
+var rcp = require("./rcp")
+var ru = require("./rusian")
+var coin = require("./coin")
+var ud = require("./ud")
+let gamekind = 0
+let gameop = 0
 let rcpresult = 0;
-let soilkind = 0;
 let rcpon = 0;
 let udopon =0;
 let udgaon =0;
@@ -24,27 +20,10 @@ let ruon = 0;
 let ruopon = 0;
 
 function threegameon(){
-  gameon = 1
+  gamekind = 1
   numbertwo = 0
   console.log('-----------삼육구 게임시작-----------')
-  console.log(gameon)
 }
-
-
-function gameoff(){
-  ruopon = 0
-  ruon = 0
-  coinon = 0
-  udgaon = 0;
-  udopon = 0;
-  rcpon = 0
-  gameon = 0
-  numbertwo = 0
-  console.log('-----------게임종료-----------')
-  console.log(gameon)
-}
-
-
 
 function threesixnine(numberone){
   numbertwo = numbertwo + 2
@@ -72,7 +51,7 @@ function threesixnine(numberone){
   } else {
     console.log(number)
   }
-if(gameon == 1){
+if(gamekind == 1){
   if(isTensClapt && isUnitsClapt){
     console.log('사용자 짝짝')
     if(numberone == '짝짝'){
@@ -81,7 +60,7 @@ if(gameon == 1){
     }else{
       console.log('틀림')
       number = '헤헷 제가 이겼어용!'
-      gameoff()
+      gamekind = 0
       return {number, numbertwo}
     }
   } else if(isTensClapt || isUnitsClapt) {
@@ -93,7 +72,7 @@ if(gameon == 1){
          console.log('틀림')
          number = '헤헷 제가 이겼어용!'
          numbertwo = 0
-         gameoff()
+         gamekind = 0
          return {number, numbertwo}
     }
   } else if (numberone == numbertwo){
@@ -103,15 +82,15 @@ if(gameon == 1){
     console.log('틀림')
     number = '헤헷 제가 이겼어용!'
     numbertwo = 0
-    gameoff()
+    gamekind = 0
     return {number, numbertwo}
   }  
 }else{
-  gameon = 0
   number = "삼,육,구 , 게임이 시작하지 않았습니다."
   return {number, numbertwo}
+  }
 }
-}
+
 
 class NPKRequest {
   constructor (httpReq) {
@@ -167,95 +146,28 @@ class NPKRequest {
       npkResponse.setOutputclapPar(clapnum)
     break            
     case 'GAME_THREENINESIX':
-        gameoff()
-        threegameon()
-        npkResponse.setOutputgamevalue()
+      gamekind = 0
+      threegameon()
     break  
     case 'GAMEACTION_STOP':
-        npkResponse.setOutputgamevalue()
+      npkResponse.setOutputgamevalue()
     break     
     case 'GAMEACTION_STOP_INSERT':
-        gameoff()
-    break
-    case 'WATER_ALLSTAT':  
-    if (!!parameters) {
-      const kindslot = parameters.WATER_COUNT
-      if (parameters.length != 0 && kindslot) {
-        if(isNaN(kindslot.value) == true){
-          soilkind = kindslot.value
-          console.log(kindslot)
-        }else{
-          soilkind = parseInt(kindslot.value)
-        }
-      }
-    }
-    srvalue = soil.value();
-    srstat = soil.stat();
-    temp = soil.tempvalue();
-    humi = soil.humivalue();
-    npkResponse.setOutputsrvaluePar()
-    break 
-    case 'WATER_HUMI':  
-    if (!!parameters) {
-      const kindslot = parameters.WATER_COUNT
-      if (parameters.length != 0 && kindslot) {
-        if(isNaN(kindslot.value) == true){
-          soilkind = kindslot.value
-          console.log(kindslot)
-        }else{
-          soilkind = parseInt(kindslot.value)
-        }
-      }
-    }
-    humi = soil.humivalue();
-    npkResponse.setOutputwaterhumi()
-    break
-    case 'WATER_TEMP':  
-    if (!!parameters) {
-      const kindslot = parameters.WATER_COUNT
-      if (parameters.length != 0 && kindslot) {
-        if(isNaN(kindslot.value) == true){
-          soilkind = kindslot.value
-          console.log(kindslot)
-        }else{
-          soilkind = parseInt(kindslot.value)
-        }
-      }
-    }
-    temp = soil.tempvalue();
-    npkResponse.setOutputwatertemp()
-    break
-    case 'WATER_STAT':  
-    if (!!parameters) {
-      const kindslot = parameters.WATER_COUNT
-      if (parameters.length != 0 && kindslot) {
-        if(isNaN(kindslot.value) == true){
-          soilkind = kindslot.value
-          console.log(kindslot)
-        }else{
-          soilkind = parseInt(kindslot.value)
-        }
-      }
-    }
-    srvalue = soil.value();
-    srstat = soil.stat();
-    npkResponse.setOutputwaterstat()
+      gamekind = 0
     break
     case 'GAME_RCP':  
-      gameoff()
-      rcpon = 1;
+      gamekind = 2
     break
     case 'GAME_UPDOWN':  
-      gameoff()
-      udgaon = 1;
+      gamekind = 4
     break
     case 'UPDOWN_NEXT_OP':  
       let uno = 0;
         if (!!parameters) {
           const rcpkind = parameters.UPDOWN_NUM1
           if (parameters.length != 0 && rcpkind) {
-            if(udgaon == 1){
-              udopon = 1
+            if(gamekind == 4){
+              gameop = 1
               udch = Math.floor(rcpkind.value/10 + 1);
               udrand = ud.udoption(rcpkind.value);
               uno  = "1 에서 " + rcpkind.value +" 까지 업다운 설정이 완료되었습니다, 총기회는 "+ udch 
@@ -273,7 +185,7 @@ class NPKRequest {
         if (!!parameters) {
           const rcpkind = parameters.UPDOWN_NUM1
           if (parameters.length != 0 && rcpkind) {
-            if(udopon == 1){
+            if(gameop == 1){
               if(udch != 0){
               unn = ud.udgame(rcpkind.value);
               udch--;
@@ -291,7 +203,7 @@ class NPKRequest {
     if (!!parameters) {
       const rcpkind = parameters.RCP_RESULT
       if (parameters.length != 0 && rcpkind) {
-        if(rcpon == 1){
+        if(gamekind == 2){
           rcpresult = rcp.rcpgmae(rcpkind.value);
           console.log(rcpkind)
         }else{
@@ -302,12 +214,11 @@ class NPKRequest {
     npkResponse.setOutputrcpanswer();    
     break
     case 'GAME_COIN': 
-      gameoff() 
-      coinon = 1
+      gamekind = 3 
     break
     case 'COIN_THROW': 
       let coinresult;
-      if(coinon == 1){
+      if(gamekind == 3){
         coinresult = "동전을 던졌습니다! 결과는?,,,, 짜잔!, " + coin.coingame() +", 입니다!"
         
       }else{
@@ -317,16 +228,15 @@ class NPKRequest {
     npkResponse.setOutputcointhrow(coinresult)
     break 
     case 'GAME_RU': 
-      gameoff() 
-      ruon = 1
+      gamekind = 5
     break
     case 'RU_OP':  
       let ruo = 0;
         if (!!parameters) {
           const rcpkind = parameters.RU_NUMBER
           if (parameters.length != 0 && rcpkind) {
-            if(ruon == 1){
-              ruopon = 1
+            if(gamekind == 5){
+              gameop = 2
               ru.ruchoice(rcpkind.value)
               ruo  = "러시안 룰렛. 인원수,"+ rcpkind.value + ", 명으로 설정 되었습니다."+ 
               "게임을 시작합니다.! 당겨, 라고 말해주세요!"
@@ -340,7 +250,7 @@ class NPKRequest {
     break
     case 'RU_SHOOT':  
       let run = 0;
-            if(ruopon == 1 && ru.reson() == 1){
+            if(gameop == 2 && ru.reson() == 1){
               run = ru.rugame()
             }else{
               run = "러시안룰렛이 장전되지 않았어요!";
@@ -372,37 +282,13 @@ class NPKResponse {
   }
   setOutputgamevalue(){
     this.output = {
-      gameon: gameon,
+      GAME_VALUE: gamekind,
     }
   }
   setOutputclapPar(clapnum){
     this.output = {
       clapnumber: clapnum.number,
     }
-  }
-  setOutputsrvaluePar(){
-    this.output = {
-      nowwater: srvalue,
-      watersay: srstat,
-      srtemp: temp,
-      srhumi: humi
-    }
-  }
-  setOutputwatertemp(){
-    this.output = {
-      tsrtemp: temp,
-    } 
-  }    
-  setOutputwaterhumi(){
-    this.output = {
-      hsrhumi: humi,
-    } 
-  }
-  setOutputwaterstat(){
-    this.output = {
-      nowwatersr: srvalue,
-      watersaysr: srstat
-    } 
   }
   setOutputrcpanswer(){
     this.output = {
