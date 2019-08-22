@@ -27,7 +27,7 @@ rcp.rcpgmae = function(choice1){
         }
     }
 
-    if (choice1 == "보자기"){
+    if (choice1 == "보자기" || choice1 == "보"){
         if (computerChoice == "가위"){
             return "저는 " + computerChoice + "! ,제가 이겼어용 헤헷!";
         }else{
