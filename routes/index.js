@@ -17,6 +17,9 @@ router.post(`/nugu/COIN_THROW`, nugu);
 router.post(`/nugu/GAME_RU`, nugu);
 router.post(`/nugu/RU_OP`, nugu);
 router.post(`/nugu/RU_SHOOT`, nugu);
+router.post(`/nugu/MOD_SOLO_DRINK`, nugu);
+router.post(`/nugu/MOD_RANKING_MOD`, nugu);
+router.post(`/nugu/RU_SHOOT`, nugu);
 
 
 module.exports = router;

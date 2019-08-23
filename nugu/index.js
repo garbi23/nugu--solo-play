@@ -1,23 +1,17 @@
 const uuid = require('uuid').v4
 const _ = require('lodash')
 const { DOMAIN } = require('../config')
-let gameon = 0
 let numbertwo = 0
 var rcp = require("./rcp")
 var ru = require("./rusian")
 var coin = require("./coin")
 var ud = require("./ud")
+var mod = require("./mod")
 let gamekind = 0
 let gameop = 0
 let rcpresult = 0;
-let rcpon = 0;
-let udopon =0;
-let udgaon =0;
 let udch = 0;
 let udrand = 0;
-let coinon = 0;
-let ruon = 0;
-let ruopon = 0;
 
 function threegameon(){
   gamekind = 1
@@ -58,9 +52,14 @@ if(gamekind == 1){
       console.log('사용자' + numbertwo)
       return {number, numbertwo}
     }else{
-      console.log('틀림')
-      number = '헤헷 제가 이겼어용!'
+      if(mod.modnumber() == 1){
+        number = '헤헷 제가 이겼어요! 한잔! 원샷 가시죠!'
+    
+      }else{
+        number = '헤헷 제가 이겼어요!'
+      }
       gamekind = 0
+      numbertwo = 0
       return {number, numbertwo}
     }
   } else if(isTensClapt || isUnitsClapt) {
@@ -69,20 +68,28 @@ if(gamekind == 1){
         console.log('사용자' + numbertwo)
         return {number, numbertwo}
        }else{
-         console.log('틀림')
-         number = '헤헷 제가 이겼어용!'
-         numbertwo = 0
-         gamekind = 0
-         return {number, numbertwo}
+        if(mod.modnumber() == 1){
+          number = '헤헷 제가 이겼어요! 한잔! 원샷 가시죠!'
+      
+        }else{
+          number = '헤헷 제가 이겼어요!'
+        }
+        gamekind = 0
+        numbertwo = 0
+        return {number, numbertwo}
     }
   } else if (numberone == numbertwo){
     console.log('사용자' + numbertwo)
     return {number, numbertwo}
   } else {
-    console.log('틀림')
-    number = '헤헷 제가 이겼어용!'
-    numbertwo = 0
+    if(mod.modnumber() == 1){
+      number = '헤헷 제가 이겼어요! 한잔! 원샷 가시죠!'
+  
+    }else{
+      number = '헤헷 제가 이겼어요!'
+    }
     gamekind = 0
+    numbertwo = 0
     return {number, numbertwo}
   }  
 }else{
@@ -257,11 +264,18 @@ class NPKRequest {
             }
         npkResponse.setOutputrushoot(run);
     break     
+    case 'MOD_SOLO_DRINK':  
+      mod.modselect(1)
+    break    
+    case 'MOD_RANKING_MOD':  
+      mod.modselect(2)
+    break      
+    case 'MOD_BASIC_MOD':  
+      mod.modselect(0)
+    break      
     }                                   
   }
 }
-
-
 
 
 class NPKResponse {
