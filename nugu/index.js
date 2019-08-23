@@ -13,11 +13,29 @@ let rcpresult = 0;
 let udch = 0;
 let udrand = 0;
 let drink = '헤헷 제가 이겼어요! 한잔! 원샷 가시죠! 술이 들어간다 술이 들어간다~! 쭈욱~ 쭉 쭉,  쭈욱~ 쭈욱 쭉 '
+let time = 0
+var intervalObj = 0
+
+function gameoff(){
+  clearInterval(intervalObj)
+  time = 0
+  gamekind = 0
+  gameop = 0
+}
 
 function threegameon(){
+  let answer = 0
+  if(mod.modnumber() == 2){
+    answer = '삼육구 랭킹 모드를 시작합니다! 최대한 틀리지 않고 맞추어 보세요!, 삼육구 게임을 시작합니다!' +
+    ', 숫자 1 ,짝수는 짝 이라는 형태로 말해주세요! 게임시작합니다! 삼,육구, 삼육구 , 삼,육구 ,삼육구! , 1 !'
+    intervalObj = setInterval(() => {time++}, 1000);
+  }else{
+    answer = '삼육구 게임을 시작합니다!' +
+    ', 숫자 1 ,짝수는 짝 이라는 형태로 말해주세요! 게임시작합니다! 삼,육구, 삼육구 , 삼,육구 ,삼육구! , 1 !'
+  }
   gamekind = 1
   numbertwo = 0
-  console.log('-----------삼육구 게임시작-----------')
+  npkResponse.setOutputtnson(answer)
 }
 
 function threesixnine(numberone){
@@ -56,6 +74,10 @@ if(gamekind == 1){
       if(mod.modnumber() == 1){
         number = drink
     
+      }else if(mod.modnumber() == 2){
+        number = '총 ' + number +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
+        clearInterval(intervalObj)
+        time = 0
       }else{
         number = '헤헷 제가 이겼어요!'
       }
@@ -72,6 +94,10 @@ if(gamekind == 1){
         if(mod.modnumber() == 1){
           number = drink
       
+        }else if(mod.modnumber() == 2){
+          number = '총 ' + number +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
+          clearInterval(intervalObj)
+          time = 0
         }else{
           number = '헤헷 제가 이겼어요!'
         }
@@ -86,6 +112,10 @@ if(gamekind == 1){
     if(mod.modnumber() == 1){
       number = drink
   
+    }else if(mod.modnumber() == 2){
+      number = '총 ' + number +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
+      clearInterval(intervalObj)
+      time = 0
     }else{
       number = '헤헷 제가 이겼어요!'
     }
@@ -154,19 +184,21 @@ class NPKRequest {
       npkResponse.setOutputclapPar(clapnum)
     break            
     case 'GAME_THREENINESIX':
-      gamekind = 0
+      gameoff()
       threegameon()
     break  
     case 'GAMEACTION_STOP':
       npkResponse.setOutputgamevalue()
     break     
     case 'GAMEACTION_STOP_INSERT':
-      gamekind = 0
+      gameoff()
     break
     case 'GAME_RCP':  
+      gameoff()
       gamekind = 2
     break
     case 'GAME_UPDOWN':  
+      gameoff()
       gamekind = 4
     break
     case 'UPDOWN_NEXT_OP':  
@@ -222,6 +254,7 @@ class NPKRequest {
     npkResponse.setOutputrcpanswer();    
     break
     case 'GAME_COIN': 
+      gameoff()
       gamekind = 3 
     break
     case 'COIN_THROW': 
@@ -236,6 +269,7 @@ class NPKRequest {
     npkResponse.setOutputcointhrow(coinresult)
     break 
     case 'GAME_RU': 
+      gameoff()
       gamekind = 5
     break
     case 'RU_OP':  
@@ -334,7 +368,12 @@ class NPKResponse {
     this.output = {
       ruresult: soranswer,
     } 
-  }            
+  }
+  setOutputtnson(soranswer){
+    this.output = {
+      gameon: soranswer,
+    } 
+  }              
 }
   const nuguReq = function (httpReq, httpRes, next) {
     npkResponse = new NPKResponse()
