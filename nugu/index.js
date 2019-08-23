@@ -283,11 +283,7 @@ class NPKRequest {
           if (parameters.length != 0 && rcpkind) {
             if(gamekind == 5){
               let numva = 0
-              if(isNaN(rcpkind.value) == true){
-                numva = rcpkind.value
-              }else{
-                numva = parseInt(rcpkind.value)
-              }
+              numva = parseInt(rcpkind.value)
               gameop = 2
               ru.ruchoice(numva)
               ruo  = "러시안 룰렛. 총알 기회,"+ rcpkind.value + ", 번 으로 설정 되었습니다."+ 
