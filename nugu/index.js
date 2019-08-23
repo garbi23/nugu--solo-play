@@ -116,7 +116,7 @@ if(gamekind == 1){
   
     }else if(mod.modnumber() == 2){
       dbpost.Postcode(time)
-      number = '총 ' + number +'번 까지' + soil.tempvalue() + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
+      number = '총 ' + number +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.value() +'위 입니다!'
       clearInterval(intervalObj)
       time = 0
     }else{

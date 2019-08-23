@@ -1,11 +1,10 @@
 var mysql = require('mysql')
 var soil = {}
 let srstat = 0
-let srvalue = 0
-let temp = 0
-let humi = 0
+let rank = 0
 
-var Dupli_Query = "SELECT * FROM nugudb.sensor;";
+var Dupli_Query = "INSERT INTO tsnrank(id, score) values(default,1400);"+
+"SELECT t.id, t.score, (SELECT COUNT(*) FROM  tsnrank WHERE score >= t.score) AS rank FROM tsnrank  t WHERE score = '1400';";
 
 var connection = mysql.createConnection({
   host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
@@ -23,35 +22,14 @@ var revalue = setInterval(function()
          if(err){
            throw err
          }
-          srvalue = rows[2].srvalue
-          temp = rows[0].srvalue
-          humi = rows[1].srvalue
+          temp = rows[0].rank
       });
-},500);
+},100);
 
 
 soil.value = function(){
 
-  return srvalue;
-}
-soil.tempvalue = function(){
-
-  return temp;
-}
-soil.humivalue = function(){
-
-  return humi;
-}
-
-soil.stat = function(){
-    if(srvalue <= 30){
-        srstat = '물이 부족합니다! 어서 물을 주세요!'
-       }else if(srvalue > 30 && srvalue < 80){
-        srstat = '물이 적당합니다!'
-       }else{
-        srstat = '물이 충분합니다!'
-       }
-      return srstat;
+  return rank;
 }
 
 
