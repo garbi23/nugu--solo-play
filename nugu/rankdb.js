@@ -13,14 +13,22 @@ var connection = mysql.createConnection({
 connection.connect()
 
 
-
 soil.value = function(num){
-    var Dupli_Query = "SELECT t.score, (SELECT COUNT(*) FROM tsnrank WHERE score >= t.score) AS rank FROM tsnrank t WHERE score = '1002';"
+
+    var INSERT_Query = "INSERT INTO tsnrank(id, score) values(default,"+ num +");"
+    connection.query(INSERT_Query, function(err, rows, fields){
+        if(err){
+          throw err
+        }
+     });
+
+
+    var Dupli_Query = "SELECT t.score, (SELECT COUNT(*) FROM tsnrank WHERE score >= t.score) AS rank FROM tsnrank t WHERE score = '"+num+"';"
     connection.query(Dupli_Query, function(err, rows, fields){
         if(err){
           throw err
         }
-        console.log(rows[0].rank)
+        rank = rows[0].rank
      });
   return rank;
 }
