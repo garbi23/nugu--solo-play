@@ -15,23 +15,28 @@ connection.connect()
 
 soil.value = function(num){
 
-    var INSERT_Query = "INSERT INTO tsnrank(id, score) values(default,"+ num +");"
-    connection.query(INSERT_Query, function(err, rows, fields){
-        if(err){
-          throw err
-        }
-     });
 
+      var INSERT_Query = "INSERT INTO tsnrank(id, score) values(default,"+ num +");"
+      connection.query(INSERT_Query, function(err, rows, fields){
+          if(err){
+            throw err
+          }
+       });
+  
+  
+      var Dupli_Query = "SELECT t.score, (SELECT COUNT(*) FROM tsnrank WHERE score >= t.score) AS rank FROM tsnrank t WHERE score = '"+num+"';"
+      connection.query(Dupli_Query, function(err, rows, fields){
+          if(err){
+            throw err
+          }
+          rank = rows[0].rank
+          console.log(rank)
+       });
 
-    var Dupli_Query = "SELECT t.score, (SELECT COUNT(*) FROM tsnrank WHERE score >= t.score) AS rank FROM tsnrank t WHERE score = '"+num+"';"
-    connection.query(Dupli_Query, function(err, rows, fields){
-        if(err){
-          throw err
-        }
-        rank = rows[0].rank
-        console.log(rank)
-     });
-  return rank;
+       const timeoutObj = setTimeout(() => {
+        return rank;
+      }, 500);
+
 }
 
 
