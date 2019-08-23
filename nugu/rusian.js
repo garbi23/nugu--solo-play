@@ -14,6 +14,7 @@ let alcol = 0
 ru.ruchoice = function(num){
     now = 0
     nugunow = 0
+    nowturn = 0
     runumchoice = (Math.floor(Math.random() * num) + 1)
     console.log(runumchoice)
     ruson = 1
@@ -46,17 +47,20 @@ function alcoset(number){
 
 
 ru.rugame = function(){
+    if(nowturn == 0){
+        now++
+    }else{
+        nugunow++
+    }
     if(mod.modnumber() == 1){
         if(nowturn == 0 && now == runumchoice){
             alcoset(1)
             ruson = 0
         }else if(nowturn == 0 && now != runumchoice){
-            now++
             alcoset(2)
             nowturn = 1
             ruson = 1
         }else if(nowturn == 1 && nugunow != runumchoice){
-            nugunow++
             nowturn = 0
             alcoset(3)
             ruson = 1
@@ -66,7 +70,6 @@ ru.rugame = function(){
             alcol++
         }
     }else{
-        now++
         if(now == runumchoice){
             result = "빵야!, 당첨 되셨습니다! 다시 하실려면 장전 해주세요!"
             ruson = 0
@@ -76,8 +79,6 @@ ru.rugame = function(){
         }
     }
     return result
-
-
 }
 
 ru.reson = function(){
