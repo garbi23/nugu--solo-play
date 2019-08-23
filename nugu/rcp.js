@@ -41,7 +41,7 @@ function alresult(number){
 }
 
 function rcpmod(){
-    if(mod.modnumber == 1){
+    if(mod.modnumber() == 1){
         alcol++
     }
 }
