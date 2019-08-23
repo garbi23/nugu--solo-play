@@ -5,7 +5,7 @@ var mod = require("./mod")
 
 function alresult(number){
     if(alcol >= 3){
-        if(nubmer == 1){
+        if(number == 1){
             result = "후헤헤헹 뭐양... , 저능 가윙! ,주인님이 이겼어요, 한잔 할게용...";
         }else if(number == 2){
             result = "하하하하하! 주인님이 졌어용!... , 저능 가윙! ,한잔 먹어랏!";
@@ -21,7 +21,7 @@ function alresult(number){
             result = "어라라라? 무승부넹.. 한번더하장!";
         }
     }else{
-        if(nubmer == 1){
+        if(number == 1){
             result = "저는 가위! ,주인님이 이겼어요,";
         }else if(number == 2){
             result = "저는 가위! ,제가 이겼어용 헤헷!";
