@@ -13,7 +13,7 @@ let gameop = 0
 let rcpresult = 0;
 let udch = 0;
 let udrand = 0;
-let drink = '헤헷 제가 이겼어요! 한잔! 원샷 가시죠! 술이 들어간다 술이 들어간다~! 쭈욱~ 쭉 쭉,  쭈욱~ 쭈욱 쭉 '
+let drink = '헤헷 제가 이겼어요! 한잔! 원샷 가시죠! 술이 들어간다 술이 들어간다~! 쭈우욱 쭉 쭉,  쭈우욱 쭈욱 쭉 '
 let time = 0
 var intervalObj = 0
 
