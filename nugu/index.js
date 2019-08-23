@@ -70,7 +70,6 @@ if(gamekind == 1){
     console.log('사용자 짝짝')
     if(numberone == '짝짝'){
       console.log('사용자' + numbertwo)
-      return {number, numbertwo}
     }else{
       if(mod.modnumber() == 1){
         number = drink
@@ -84,13 +83,11 @@ if(gamekind == 1){
       }
       gamekind = 0
       numbertwo = 0
-      return {number, numbertwo}
     }
   } else if(isTensClapt || isUnitsClapt) {
       console.log('사용자 짝')
       if(numberone == '짝'){
         console.log('사용자' + numbertwo)
-        return {number, numbertwo}
        }else{
         if(mod.modnumber() == 1){
           number = drink
@@ -104,11 +101,9 @@ if(gamekind == 1){
         }
         gamekind = 0
         numbertwo = 0
-        return {number, numbertwo}
     }
   } else if (numberone == numbertwo){
     console.log('사용자' + numbertwo)
-    return {number, numbertwo}
   } else {
     if(mod.modnumber() == 1){
       number = drink
@@ -116,7 +111,8 @@ if(gamekind == 1){
     }else if(mod.modnumber() == 2){
       let nownumber = numbertwo - 1
       let score = nownumber*100 - time*10
-      number = '총 ' + nownumber  +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.value(score) +'위 입니다!'
+      soil.value(score)
+      number = '총 ' + nownumber  +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.bring() +'위 입니다!'
       clearInterval(intervalObj)
       time = 0
     }else{
@@ -124,12 +120,11 @@ if(gamekind == 1){
     }
     gamekind = 0
     numbertwo = 0
-    return {number, numbertwo}
   }  
 }else{
   number = "삼,육,구 , 게임이 시작하지 않았습니다."
-  return {number, numbertwo}
   }
+  return {number, numbertwo}
 }
 
 

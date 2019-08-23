@@ -33,10 +33,10 @@ soil.value = function(num){
           console.log(rank)
        });
 
-       const timeoutObj = setTimeout(() => {
-        return rank;
-      }, 500);
+}
 
+soil.bring = function(){
+    return rank
 }
 
 
