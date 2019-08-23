@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 
 dbpost.Postcode = function(codestring) {
 
-    var Post_Query = "UPDATE sensor SET srvalue = '"+codestring+"' WHERE srkind = 'temp'";
+    var Post_Query = "INSERT INTO tsnrank(id, score) values(default,"+ codestring +");";
     connection.query(Post_Query, function(err, rows, fields){
         if(err){
           throw err
