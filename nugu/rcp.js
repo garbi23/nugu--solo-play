@@ -4,23 +4,42 @@ let result = 0
 var mod = require("./mod")
 
 function alresult(number){
+
+if(mod.modnumber() == 1){
     if(alcol >= 3){
         if(number == 1){
             result = "후헤헤헹 뭐양... , 저능 가윙! ,주인님이 이겼어요, 한잔 할게용...";
         }else if(number == 2){
-            result = "하하하하하! 주인님이 졌어용!... , 저능 가윙! ,한잔 먹어랏!";
+            result = "하하하! 주인님이 졌어용!... , 저능 가윙! ,한잔 먹어랏!";
         }else if(number == 3){
             result = "흐극흐극흐극 뭐양... , 저능 가윙! ,주인님이 이겼어요, 한잔 할겡...";
         }else if(number == 4){
             result = "푸헤헤헤헤! 주인님이 졌어용!... , 저능 가윙! ,한잔 원샷 먹어야징!";
         }else if(number == 5){
-            result = "라라라라라라! 주인님이 졌어용!... , 저능 바윙! ,한잔 가랏!";
+            result = "라라라라! 주인님이 졌어용!... , 저능 바윙! ,한잔 가랏!";
         }else if(number == 6){
-            result = "흥흥흥흥 뭐양... , 저능 바윙! ,주인님이 이겼어요, 한잔 먹어야겠당...";
+            result = "흥흥 뭐양... , 저능 바윙! ,주인님이 이겼어요, 한잔 먹어야겠당...";
         }else if(number == 7){
             result = "어라라라? 무승부넹.. 한번더하장!";
         }
     }else{
+        if(number == 1){
+            result = "저는 가위! ,주인님이 이겼어요, 한잔 할게요!";
+        }else if(number == 2){
+            result = "저는 가위! ,제가 이겼어용 헤헷! 한잔 하시죠!";
+        }else if(number == 3){
+            result = "저는 가위! ,주인님이 이겼어요, 한잔 원샷 해볼게요!";
+        }else if(number == 4){
+            result = "저는 가위! ,제가 이겼어용 헤헷!, 한잔 원샷 가시죠!";
+        }else if(number == 5){
+            result = "저는 바위! ,제가 이겼어용 헤헷!, 한잔 달려요!";
+        }else if(number == 6){
+            result = "저는 바위! ,주인님이 이겼어요, 한잔 달려볼게요!";
+        }else if(number == 7){
+            result = "결과는 무승부에요! 다음번에는 이길거에요!";
+        }
+    }
+}else{
         if(number == 1){
             result = "저는 가위! ,주인님이 이겼어요,";
         }else if(number == 2){
