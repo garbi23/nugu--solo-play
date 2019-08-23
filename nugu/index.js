@@ -7,7 +7,6 @@ var ru = require("./rusian")
 var coin = require("./coin")
 var ud = require("./ud")
 var mod = require("./mod")
-var dbpost = require("./dbpost")
 var soil = require("./rankdb")
 let gamekind = 0
 let gameop = 0
