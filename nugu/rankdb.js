@@ -20,7 +20,6 @@ soil.value = function(num){
         if(err){
           throw err
         }
-         rank = rows[0].rank
      });
   return rank;
 }
