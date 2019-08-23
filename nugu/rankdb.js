@@ -16,7 +16,7 @@ connection.connect()
 
 soil.value = function(num){
     var Dupli_Query = "INSERT INTO tsnrank(id, score) values(default,"+ num +");"+
-    "SELECT t.score, (SELECT COUNT(*) FROM tsnrank WHERE score >= t.score) AS rank FROM tsnrank t WHERE score = '100';"
+    "SELECT t.score, (SELECT COUNT(*) FROM tsnrank WHERE score >= t.score) AS rank FROM tsnrank t WHERE score = '"+num+"';"
     connection.query(Dupli_Query, function(err, rows, fields){
         if(err){
           throw err
