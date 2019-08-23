@@ -74,6 +74,7 @@ rcp.rcpgmae = function(choice1){
     if (choice1 == "바위"){
         if (computerChoice == "가위"){ 
             rcpmod()
+            console.log(alcol);
             alresult(1)
             return result
         }else{
@@ -84,6 +85,7 @@ rcp.rcpgmae = function(choice1){
     if (choice1 == "보자기" || choice1 == "보"){
         if (computerChoice == "가위"){
             rcpmod()
+            console.log(alcol);
             alresult(3)
             return result
         }else{
@@ -97,6 +99,7 @@ rcp.rcpgmae = function(choice1){
             return result
         }else {
             rcpmod()
+            console.log(alcol);
             alresult(6)
             return result
         }
