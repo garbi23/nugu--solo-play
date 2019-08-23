@@ -26,9 +26,9 @@ function alcoset(number){
         if(number == 1){
             result = "하하하하하! 주인님이 당첨 뎄서요옹!, 원샷 가장! 마셔 마셩 마셩 , 다쉬 할려명, 장전 해르아"
         }else if(number == 2){
-            result = "힝... 주인님이 안걸렸엉 훙흥"
+            result = "힝...나 취했나방.. 주인님이 안걸렸엉 훙흥"
         }else if(number == 3){
-            result = "헤헤헤헤헤 나는 안걸렸지롱~"
+            result = "헤헤헤헤헤 나는 안걸렸지롱~ 나는 안취했지롱~"
         }else if(number == 4){
             result = "후헤헤헹 뭐양... 내가 걸렸엉... 후흐흐... 원샷 할게용.."
         }
