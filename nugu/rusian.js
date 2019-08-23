@@ -47,11 +47,7 @@ function alcoset(number){
 
 
 ru.rugame = function(){
-    if(nowturn == 0){
-        now++
-    }else{
-        nugunow++
-    }
+    now++
     if(mod.modnumber() == 1){
         if(nowturn == 0 && now == runumchoice){
             alcoset(1)
@@ -60,11 +56,11 @@ ru.rugame = function(){
             alcoset(2)
             nowturn = 1
             ruson = 1
-        }else if(nowturn == 1 && nugunow != runumchoice){
+        }else if(nowturn == 1 && now != runumchoice){
             nowturn = 0
             alcoset(3)
             ruson = 1
-        }else if(nowturn == 1 && nugunow == runumchoice){
+        }else if(nowturn == 1 && now == runumchoice){
             alcoset(4)
             ruson = 0
             alcol++
