@@ -284,7 +284,7 @@ class NPKRequest {
             if(gamekind == 5){
               gameop = 2
               ru.ruchoice(rcpkind.value)
-              ruo  = "러시안 룰렛. 인원수,"+ rcpkind.value + ", 명으로 설정 되었습니다."+ 
+              ruo  = "러시안 룰렛. 총알 기회,"+ rcpkind.value + ", 번 으로 설정 되었습니다."+ 
               "게임을 시작합니다.! 당겨, 라고 말해주세요!"
               console.log(rcpkind.value)
             }else{
