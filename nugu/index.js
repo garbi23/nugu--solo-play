@@ -115,8 +115,9 @@ if(gamekind == 1){
       number = drink
   
     }else if(mod.modnumber() == 2){
-      let score = (numbertwo-1)*100 - time*10
-      number = '총 ' + numbertwo - 1 +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.value(score) +'위 입니다!'
+      let nownumber = numbertwo - 1
+      let score = nownumber*100 - time*10
+      number = '총 ' + nownumber  +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.value(score) +'위 입니다!'
       clearInterval(intervalObj)
       time = 0
     }else{
