@@ -75,7 +75,10 @@ if(gamekind == 1){
         number = drink
     
       }else if(mod.modnumber() == 2){
-        number = '총 ' + number +'번 까지 ' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
+        let nownumber = numbertwo - 1
+        let score = nownumber*100 - time*10
+        soil.value(score)
+        number = '총 ' + nownumber  +'번 까지,' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.bring() +'위 입니다!'
         clearInterval(intervalObj)
         time = 0
       }else{
@@ -93,7 +96,10 @@ if(gamekind == 1){
           number = drink
       
         }else if(mod.modnumber() == 2){
-          number = '총 ' + number +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
+          let nownumber = numbertwo - 1
+          let score = nownumber*100 - time*10
+          soil.value(score)
+          number = '총 ' + nownumber  +'번 까지,' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.bring() +'위 입니다!'
           clearInterval(intervalObj)
           time = 0
         }else{
@@ -112,7 +118,7 @@ if(gamekind == 1){
       let nownumber = numbertwo - 1
       let score = nownumber*100 - time*10
       soil.value(score)
-      number = '총 ' + nownumber  +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.bring() +'위 입니다!'
+      number = '총 ' + nownumber  +'번 까지,' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.bring() +'위 입니다!'
       clearInterval(intervalObj)
       time = 0
     }else{
