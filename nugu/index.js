@@ -116,7 +116,6 @@ if(gamekind == 1){
   
     }else if(mod.modnumber() == 2){
       let score = number*100 - time*10
-      dbpost.Postcode(time)
       number = '총 ' + number +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 '+ soil.value(score) +'위 입니다!'
       clearInterval(intervalObj)
       time = 0
