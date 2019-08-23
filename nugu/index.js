@@ -7,6 +7,8 @@ var ru = require("./rusian")
 var coin = require("./coin")
 var ud = require("./ud")
 var mod = require("./mod")
+var dbpost = require("./dbpost")
+var soil = require("./rankdb")
 let gamekind = 0
 let gameop = 0
 let rcpresult = 0;
@@ -113,7 +115,8 @@ if(gamekind == 1){
       number = drink
   
     }else if(mod.modnumber() == 2){
-      number = '총 ' + number +'번 까지' + time + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
+      dbpost.Postcode(time)
+      number = '총 ' + number +'번 까지' + soil.tempvalue() + '초로 삼육구를 클리어 하셨습니다! 랭킹은 1위 입니다!'
       clearInterval(intervalObj)
       time = 0
     }else{
