@@ -53,9 +53,11 @@ ru.rugame = function(){
         }else if(nowturn == 0 && now != runumchoice){
             now++
             alcoset(2)
+            nowturn = 1
             ruson = 1
         }else if(nowturn == 1 && nugunow != runumchoice){
             nugunow++
+            nowturn = 0
             alcoset(3)
             ruson = 1
         }else if(nowturn == 1 && nugunow == runumchoice){
