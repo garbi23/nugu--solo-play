@@ -93,10 +93,10 @@ rcp.rcpgmae = function(choice1){
     }
     if (choice1 == "가위"){
         if (computerChoice == "바위"){
-            rcpmod()
             alresult(5)
             return result
         }else {
+            rcpmod()
             alresult(6)
             return result
         }
