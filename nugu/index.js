@@ -22,6 +22,8 @@ function gameoff(){
   time = 0
   gamekind = 0
   gameop = 0
+  ru.resetalcol()
+  rcp.resetal()
 }
 
 function threegameon(){

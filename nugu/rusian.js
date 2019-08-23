@@ -10,6 +10,9 @@ let drink = '한잔! 원샷 가시죠! 술이 들어간다 술이 들어간다~!
 let aldrink = '원샷 가자! 마셔 마셩 마셩 하핳'
 let alcol = 0
 
+ru.resetalcol = function(){
+    alcol = 0
+}
 
 ru.ruchoice = function(num){
     now = 0
