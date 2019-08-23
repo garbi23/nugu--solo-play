@@ -282,11 +282,17 @@ class NPKRequest {
           const rcpkind = parameters.RU_NUMBER
           if (parameters.length != 0 && rcpkind) {
             if(gamekind == 5){
+              let numva = 0
+              if(isNaN(rcpkind.value) == true){
+                numva = rcpkind.value
+              }else{
+                numva = parseInt(rcpkind.value)
+              }
               gameop = 2
-              ru.ruchoice(rcpkind.value)
+              ru.ruchoice(numva)
               ruo  = "러시안 룰렛. 총알 기회,"+ rcpkind.value + ", 번 으로 설정 되었습니다."+ 
               "게임을 시작합니다.! 당겨, 라고 말해주세요!"
-              console.log(rcpkind.value)
+              console.log(numva)
             }else{
               ruo = "러시안룰렛 게임이 시작하지 않았어요!";
             }
