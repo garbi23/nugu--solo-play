@@ -36,7 +36,7 @@ if(mod.modnumber() == 1){
         }else if(number == 6){
             result = "저는 바위! ,주인님이 이겼어요, 한잔 달려볼게요!";
         }else if(number == 7){
-            result = "결과는 무승부에요! 다음번에는 이길거에요!";
+            result = "결과는 무승부에요! 다음번에는 제가 이겨요!";
         }
     }
 }else{
@@ -53,7 +53,7 @@ if(mod.modnumber() == 1){
         }else if(number == 6){
             result = "저는 바위! ,주인님이 이겼어요,";
         }else if(number == 7){
-            result = "결과는 무승부에요! 다음번에는 이길거에요!";
+            result = "결과는 무승부에요! 다음번에는 제가 이겨요!!";
         }
     }
 
@@ -103,12 +103,12 @@ rcp.rcpgmae = function(choice1){
     }
     if (choice1 == "보자기" || choice1 == "보"){
         if (computerChoice == "가위"){
+            alresult(4)
+            return result
+        }else{
             rcpmod()
             console.log(alcol);
             alresult(3)
-            return result
-        }else{
-            alresult(4)
             return result
         }
     }
