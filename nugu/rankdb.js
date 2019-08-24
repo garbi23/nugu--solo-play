@@ -24,7 +24,7 @@ var revalue = setInterval(function()
         rank = rows[0].rank
      });
 
-},100);
+},10);
 
 soil.value = function(num){
       var INSERT_Query = "INSERT INTO tsnrank(id, score) values(default,"+ num +");"
