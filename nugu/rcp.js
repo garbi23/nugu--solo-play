@@ -8,9 +8,9 @@ function alresult(number){
 if(mod.modnumber() == 1){
     if(alcol >= 3){
         if(number == 1){
-            result = "후헤헤헹 뭐양... , 저능 가윙! ,주인님이 이겼어요, 한잔 할게용...";
+            result = "후헤헤헹 뭐양... , 저능 보자깅! ,주인님이 이겼어요, 한잔 할게용...";
         }else if(number == 2){
-            result = "하하하! 주인님이 졌어용!... , 저능 가윙! ,한잔 먹어랏!";
+            result = "하하하! 주인님이 졌어용!... , 저능 보자깅! ,한잔 먹어랏!";
         }else if(number == 3){
             result = "흐극흐극흐극 뭐양... , 저능 가윙! ,주인님이 이겼어요, 한잔 할겡...";
         }else if(number == 4){
@@ -24,9 +24,9 @@ if(mod.modnumber() == 1){
         }
     }else{
         if(number == 1){
-            result = "저는 가위! ,주인님이 이겼어요, 한잔 할게요!";
+            result = "저는 보자기! ,주인님이 이겼어요, 한잔 할게요!";
         }else if(number == 2){
-            result = "저는 가위! ,제가 이겼어용 헤헷! 한잔 하시죠!";
+            result = "저는 보자기! ,제가 이겼어용 헤헷! 한잔 하시죠!";
         }else if(number == 3){
             result = "저는 가위! ,주인님이 이겼어요, 한잔 원샷 해볼게요!";
         }else if(number == 4){
@@ -41,9 +41,9 @@ if(mod.modnumber() == 1){
     }
 }else{
         if(number == 1){
-            result = "저는 가위! ,주인님이 이겼어요,";
+            result = "저는 보자기! ,주인님이 이겼어요,";
         }else if(number == 2){
-            result = "저는 가위! ,제가 이겼어용 헤헷!";
+            result = "저는 보자기! ,제가 이겼어용 헤헷!";
         }else if(number == 3){
             result = "저는 가위! ,주인님이 이겼어요,";
         }else if(number == 4){
@@ -91,13 +91,13 @@ rcp.rcpgmae = function(choice1){
     }
 
     if (choice1 == "바위"){
-        if (computerChoice == "가위"){ 
+        if (computerChoice == "보자기"){ 
+            alresult(2)
+            return result
+        }else{
             rcpmod()
             console.log(alcol);
             alresult(1)
-            return result
-        }else{
-            alresult(2)
             return result
         }
     }
