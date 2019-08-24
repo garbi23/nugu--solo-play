@@ -2,7 +2,7 @@ var mysql = require('mysql')
 var soil = {}
 let srstat = 0
 let rank = 0
-let score = 1002
+let score = 0
 
 
 var connection = mysql.createConnection({
