@@ -8,7 +8,7 @@ let score = 0
 var connection = mysql.createConnection({
   host : 'mynugusql.c9utrsxn9yo6.ap-northeast-2.rds.amazonaws.com',
   user : 'root',
-  password : 'xodnsqkqh233',
+  password : '**********',
   database : 'NuguRank'
 });
 
