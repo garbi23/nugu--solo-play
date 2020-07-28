@@ -18,6 +18,13 @@ Nugu Play 개발 공모전 2019 하반기
 ------------------------------
 ![Alt text](/img/img3.PNG)
 
+#4. 대회 결과
+------------------------------
+### SKT 주최 Nugu Play 개발 공모전 2019 하반기 결과로
+### 이 프로젝트를 통해 입상을 하였다.
+![Alt text](/img/img4.JPG)
+
+
 ### 관련 유튜브 영상(시나리오 영상) : [Youtube](https://www.youtube.com/watch?v=DU7m2_65vrM, "google link")
 
 ### 관련 유튜브 영상(랭킹 모드 영상) : [Youtube](https://www.youtube.com/watch?v=Ba3dzjNjQvw, "Youtube link")
