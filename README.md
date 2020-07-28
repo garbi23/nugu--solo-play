@@ -8,15 +8,15 @@ Nugu Play 개발 공모전 2019 하반기
 
 1. 솔루션 제시
 ------------------------------
-![Alt text](/img/img1.png)
+![Alt text](/img/img1.PNG)
 
 2. 기능 설명(구조)
 ------------------------------
-![Alt text](/img/img2.png)
+![Alt text](/img/img2.PNG)
 
 3. 기능 설명(호출)
 ------------------------------
-![Alt text](/img/img3.png)
+![Alt text](/img/img3.PMG)
 
 ## 관련 유튜브 영상(시나리오 영상) : [Youtube](https://www.youtube.com/watch?v=DU7m2_65vrM, "google link")
 
