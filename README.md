@@ -16,7 +16,7 @@ Nugu Play 개발 공모전 2019 하반기
 
 3. 기능 설명(호출)
 ------------------------------
-![Alt text](/img/img3.PMG)
+![Alt text](/img/img3.PNG)
 
 ## 관련 유튜브 영상(시나리오 영상) : [Youtube](https://www.youtube.com/watch?v=DU7m2_65vrM, "google link")
 
