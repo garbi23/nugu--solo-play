@@ -17,4 +17,4 @@
 ## 4. 대회 결과
 + ### SKT 주최 Nugu Play 개발 공모전 2019 하반기 결과로 이 프로젝트를 통해 입상을 하였다.
 ![Alt text](/img/img4.JPG)
-+ ### Nugu Developer 공식사이트 : [Nugu Developer 공식사이트](https://developers.nugu.co.kr/#/customer/notice?d=1596008135963&pageNo=2&noticeId=44, "Nugu Developer 공식사이트")
++ ### Nugu Developer 공식사이트 : [Nugu Developer 공식사이트](https://developers.nugu.co.kr/#/customer/notice?d=1596008135963&pageNo=2&noticeId=44 "Nugu Developer 공식사이트")
